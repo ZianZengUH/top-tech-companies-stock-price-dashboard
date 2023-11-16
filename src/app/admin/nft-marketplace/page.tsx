@@ -81,16 +81,16 @@ export default function NftMarketplace() {
               direction={{ base: 'column', md: 'row' }}
               align={{ base: 'start', md: 'center' }}
             >
-              <Text color={textColor} fontSize="2xl" ms="24px" fontWeight="700">
+              {/* <Text color={textColor} fontSize="2xl" ms="24px" fontWeight="700">
                 Trending NFTs
-              </Text>
+              </Text> */}
               <Flex
                 align="center"
                 me="20px"
                 ms={{ base: '24px', md: '0px' }}
                 mt={{ base: '20px', md: '0px' }}
               >
-                <Link
+                {/* <Link
                   href="#art"
                   color={textColorBrand}
                   fontWeight="500"
@@ -116,11 +116,11 @@ export default function NftMarketplace() {
                 </Link>
                 <Link href="#sports" color={textColorBrand} fontWeight="500">
                   Sports
-                </Link>
+                </Link> */}
               </Flex>
             </Flex>
             <SimpleGrid columns={{ base: 1, md: 3 }} gap="20px">
-              <NFT
+              {/* <NFT
                 name="Abstract Colors"
                 author="By Esthera Jackson"
                 bidders={[
@@ -153,8 +153,8 @@ export default function NftMarketplace() {
                 image={Nft2}
                 currentbid="0.91 ETH"
                 download="#"
-              />
-              <NFT
+              /> */}
+              {/* <NFT
                 name="Mesh Gradients "
                 author="By Will Smith"
                 bidders={[
@@ -237,7 +237,7 @@ export default function NftMarketplace() {
                 image={Nft6}
                 currentbid="0.91 ETH"
                 download="#"
-              />
+              /> */}
             </SimpleGrid>
           </Flex>
         </Flex>
