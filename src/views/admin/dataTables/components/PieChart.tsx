@@ -1,63 +1,8 @@
-// import React from 'react';
-// import ReactApexChart from 'react-apexcharts';
-// import { ApexOptions } from 'apexcharts';
-
-// // Define a type for the data items
-// type MarketCapDataItem = {
-//   name: string;
-//   y: number;
-// };
-
-// // Define a type for the props
-// interface PieChartProps {
-//   data: MarketCapDataItem[];
-// }
-
-// const PieChart: React.FC<PieChartProps> = ({ data }) => {
-//   // Series data for the ApexChart
-//   const series: number[] = data.map((item) => item.y);
-
-//   // Options for the ApexChart
-//   const options: ApexOptions = {
-//     chart: {
-//       type: 'pie',
-//       // Add any additional options required by ApexCharts here
-//     },
-//     labels: data.map((item) => item.name),
-//     responsive: [
-//       {
-//         breakpoint: 480,
-//         options: {
-//           chart: {
-//             width: 200,
-//           },
-//           legend: {
-//             position: 'bottom',
-//           },
-//         },
-//       },
-//     ],
-//     legend: {
-//       position: 'right',
-//       offsetY: 0,
-//       height: 230,
-//     },
-//     // It's important to ensure all options match the expected type
-//   };
-
-//   return (
-//     <div id="chart">
-//       <ReactApexChart options={options} series={series} type="pie" width={380} />
-//     </div>
-//   );
-// };
-
-// export default PieChart;
-
 import React from 'react';
 import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
-import { Box, useColorModeValue } from '@chakra-ui/react';
+import { Box, Text, useColorModeValue, Flex } from '@chakra-ui/react';
+import Menu from 'components/menu/MainMenu';
 
 interface MarketCapDataItem {
   name: string;
@@ -70,7 +15,7 @@ interface PieChartProps {
 
 const PieChart: React.FC<PieChartProps> = ({ data }) => {
   const cardBg = useColorModeValue('white', 'gray.700');
-
+  const textColor = useColorModeValue('secondaryGray.900', 'white');
   const series: number[] = data.map(item => item.y);
 
   const options: ApexOptions = {
@@ -101,8 +46,14 @@ const PieChart: React.FC<PieChartProps> = ({ data }) => {
 
   return (
     <Box bg={cardBg} p="4" borderRadius="lg" shadow="base" width="100%" maxWidth="600px" mx="auto">
-    <ReactApexChart options={options} series={series} type="pie" />
-  </Box>
+      <Flex px='25px' mb="8px" justifyContent='space-between' align='center'>
+        <Text color={textColor} fontSize='22px' fontWeight='700' lineHeight='100%'>
+          Market Capitalization in Billions per Company of Top 100 Tech Stocks
+        </Text>
+				<Menu />
+			</Flex>
+      <ReactApexChart options={options} series={series} type="pie" />
+    </Box>
   );
 };
 

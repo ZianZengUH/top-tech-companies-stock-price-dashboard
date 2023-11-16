@@ -2,6 +2,7 @@ import { Box, Flex, Progress, Table, Tbody, Td, Text, Th, Thead, Tr, useColorMod
 import { createColumnHelper, useReactTable, getCoreRowModel, flexRender } from '@tanstack/react-table';
 import Card from 'components/card/Card';
 import React from 'react';
+import Menu from 'components/menu/MainMenu';
 
 type SectorRow = {
   sector: string;
@@ -38,6 +39,14 @@ export default function SectorPercentageTable(props: { sectorData: SectorRow[] }
 
   return (
     <Card w='100%' overflowX='auto'>
+      
+      <Flex px='25px' mb="8px" justifyContent='space-between' align='center'>
+        <Text color={textColor} fontSize='22px' fontWeight='700' lineHeight='100%'>
+          Percentage Per Sector
+        </Text>
+				<Menu />
+			</Flex>
+
       <Table variant='simple'>
         <Thead>
           {tableInstance.getHeaderGroups().map((headerGroup) => (
