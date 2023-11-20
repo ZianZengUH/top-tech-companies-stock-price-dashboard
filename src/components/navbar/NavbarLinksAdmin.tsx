@@ -20,6 +20,7 @@ import { Image } from 'components/image/Image';
 import { ItemContent } from 'components/menu/ItemContent';
 import { SearchBar } from 'components/navbar/searchBar/SearchBar';
 import { SidebarResponsive } from 'components/sidebar/Sidebar';
+import { useState } from 'react';
 // Assets
 import navImage from '/public/img/layout/Navbar.png';
 import { FaEthereum } from 'react-icons/fa';
@@ -43,7 +44,13 @@ export default function HeaderLinks(props: { secondary: boolean }) {
     '14px 17px 40px 4px rgba(112, 144, 176, 0.06)',
   );
   const borderButton = useColorModeValue('secondaryGray.500', 'whiteAlpha.200');
-
+  const handleSearch = (query: string) => {
+    // Replace this with your actual search logic
+    console.log(`Performing search for: ${query}`);
+    // Add logic to handle the search query (e.g., fetch data, filter items, etc.)
+    // You might want to update the state or trigger some action in your application
+  };
+  
   return (
     <Flex
       w={{ sm: '100%', md: 'auto' }}
@@ -64,6 +71,7 @@ export default function HeaderLinks(props: { secondary: boolean }) {
         }}
         me="10px"
         borderRadius="30px"
+        onSearch={handleSearch}
       />
       <Flex
         bg={ethBg}
@@ -100,8 +108,8 @@ export default function HeaderLinks(props: { secondary: boolean }) {
         </Text>
       </Flex>
       <SidebarResponsive routes={routes} />
-      <Menu>
-        <MenuButton p="0px">
+      {/* <Menu> */}
+        {/* <MenuButton p="0px">
           <Icon
             mt="6px"
             as={MdNotificationsNone}
@@ -110,8 +118,8 @@ export default function HeaderLinks(props: { secondary: boolean }) {
             h="18px"
             me="10px"
           />
-        </MenuButton>
-        <MenuList
+        </MenuButton> */}
+        {/* <MenuList
           boxShadow={shadow}
           p="20px"
           borderRadius="20px"
@@ -135,8 +143,8 @@ export default function HeaderLinks(props: { secondary: boolean }) {
             >
               Mark all read
             </Text>
-          </Flex>
-          <Flex flexDirection="column">
+          </Flex> */}
+          {/* <Flex flexDirection="column">
             <MenuItem
               _hover={{ bg: 'none' }}
               _focus={{ bg: 'none' }}
@@ -155,11 +163,11 @@ export default function HeaderLinks(props: { secondary: boolean }) {
             >
               <ItemContent info="Horizon Design System Free" />
             </MenuItem>
-          </Flex>
-        </MenuList>
-      </Menu>
+          </Flex> */}
+        {/* </MenuList> */}
+      {/* </Menu> */}
 
-      <Menu>
+      {/* <Menu>
         <MenuButton p="0px">
           <Icon
             mt="6px"
@@ -219,7 +227,7 @@ export default function HeaderLinks(props: { secondary: boolean }) {
             </Link>
           </Flex>
         </MenuList>
-      </Menu>
+      </Menu> */}
 
       <Button
         variant="no-hover"
@@ -239,7 +247,7 @@ export default function HeaderLinks(props: { secondary: boolean }) {
           as={colorMode === 'light' ? IoMdMoon : IoMdSunny}
         />
       </Button>
-      <Menu>
+      {/* <Menu>
         <MenuButton p="0px" style={{ position: 'relative' }}>
           <Box
             _hover={{ cursor: 'pointer' }}
@@ -306,7 +314,7 @@ export default function HeaderLinks(props: { secondary: boolean }) {
             </MenuItem>
           </Flex>
         </MenuList>
-      </Menu>
+      </Menu> */}
     </Flex>
   );
 }

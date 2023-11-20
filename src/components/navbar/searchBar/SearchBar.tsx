@@ -6,7 +6,9 @@ import {
   useColorModeValue
 } from '@chakra-ui/react'
 import { SearchIcon } from '@chakra-ui/icons'
+import { useState } from 'react';
 export function SearchBar (props: {
+  onSearch: (query: string) => void; // Callback function for search action
   variant?: string
   background?: string
   children?: JSX.Element
@@ -16,6 +18,7 @@ export function SearchBar (props: {
 }) {
   // Pass the computed styles into the `__css` prop
   const {
+    onSearch,
     variant,
     background,
     children,
@@ -23,6 +26,26 @@ export function SearchBar (props: {
     borderRadius,
     ...rest
   } = props
+
+  const [searchQuery, setSearchQuery] = useState<string>('');
+
+  const handleSearch = () => {
+    // Trigger the search action with the current search query
+    onSearch(searchQuery);
+  };
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    // Update the search query as the user types
+    setSearchQuery(event.target.value);
+  };
+
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    // Trigger search when the user presses Enter
+    if (event.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
   // Chakra Color Mode
   const searchIconColor = useColorModeValue('gray.700', 'white')
   const inputBg = useColorModeValue('secondaryGray.300', 'navy.900')
@@ -43,6 +66,8 @@ export function SearchBar (props: {
             boxShadow: 'none'
           }}
           icon={<SearchIcon color={searchIconColor} w='15px' h='15px' />}
+          onClick={handleSearch} // Trigger search on icon click
+
         />
       </InputLeftElement>
 
@@ -55,6 +80,9 @@ export function SearchBar (props: {
         _placeholder={{ color: 'gray.400', fontSize: '14px' }}
         borderRadius={borderRadius ? borderRadius : '30px'}
         placeholder={placeholder ? placeholder : 'Search...'}
+        value={searchQuery}
+        onChange={handleInputChange}
+        onKeyPress={handleKeyPress}
       />
     </InputGroup>
   )
