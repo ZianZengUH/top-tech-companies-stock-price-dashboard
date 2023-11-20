@@ -3,7 +3,7 @@ import { Box, Flex, Icon, Progress, Text, useColorModeValue } from '@chakra-ui/r
 // Custom components
 import Card from 'components/card/Card';
 import IconBox from 'components/icons/IconBox';
-import Menu from 'components/menu/MainMenu';
+import Menu from 'components/menu/FinancialMenu';
 import React from 'react';
 // Assets
 import { MdOutlineCloudDone } from 'react-icons/md';
