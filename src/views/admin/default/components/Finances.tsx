@@ -9,7 +9,7 @@ import { IoCheckmarkCircle } from 'react-icons/io5';
 import { MdBarChart, MdOutlineCalendarToday } from 'react-icons/md';
 // Assets
 import { RiArrowUpSFill } from 'react-icons/ri';
-import { lineChartDataTotalSpent, lineChartOptionsTotalSpent } from 'variables/charts';
+import { lineChartDataTotalSpent, lineChartOptionsTotalSpent, lineChartOptionsYearRev, lineChartOptionsMonthRev, AAPLStockReturnsY, ACNStockReturnsY } from 'variables/financialcharts';
 import Menu from 'components/menu/FinancialMenu';
 
 export default function TotalSpent(props: { [x: string]: any }) {
@@ -38,35 +38,28 @@ export default function TotalSpent(props: { [x: string]: any }) {
 
 	return (
 		<Card justifyContent='center' alignItems='center' flexDirection='column' w='100%' mb='0px' {...rest}>
-			<Flex justify='space-between' ps='0px' pe='20px' pt='5px' w='100%'>
-				<Menu ms='auto' />
+			<Flex justifyContent='center' ps='495px' pe='20px' pt='5px' w='100%'>
+				<Text color='secondaryGray.600' fontSize='sm' fontWeight='500' mt='4px' me='15px'>
+					Click to change company
+				</Text>
+				<Menu ms='auto'/>
+				
 			</Flex>
 			<Flex w='100%' flexDirection={{ base: 'column', lg: 'row' }}>
 				<Flex flexDirection='column' me='20px' mt='28px'>
 					<Text color={textColor} fontSize='34px' textAlign='start' fontWeight='700' lineHeight='100%'>
-						$37.5K
+						AAPL
 					</Text>
 					<Flex align='center' mb='20px'>
 						<Text color='secondaryGray.600' fontSize='sm' fontWeight='500' mt='4px' me='12px'>
-							Total Spent
+							Apple
 						</Text>
 						<Flex align='center'>
-							<Icon as={RiArrowUpSFill} color='green.500' me='2px' mt='2px' />
-							<Text color='green.500' fontSize='sm' fontWeight='700' lineHeight='100%'>
-								+2.45%
-							</Text>
 						</Flex>
-					</Flex>
-
-					<Flex align='center'>
-						<Icon as={IoCheckmarkCircle} color='green.500' me='4px' />
-						<Text color='green.500' fontSize='md' fontWeight='700'>
-							On track
-						</Text>
 					</Flex>
 				</Flex>
 				<Box minH='260px' minW='75%' mt='auto'>
-					<LineChart chartData={lineChartDataTotalSpent} chartOptions={lineChartOptionsTotalSpent} />
+					<LineChart chartData={AAPLStockReturnsY} chartOptions={lineChartOptionsYearRev} />
 				</Box>
 			</Flex>
 		</Card>
