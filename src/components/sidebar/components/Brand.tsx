@@ -12,6 +12,7 @@ export function SidebarBrand() {
 	return (
 		<Flex alignItems='center' flexDirection='column'>
 			<HorizonLogo h='26px' w='175px' my='32px' color={logoColor} />
+			<p> Zephyrus‘ Flame Mapper </p>
 			<HSeparator mb='20px' />
 		</Flex>
 	);
