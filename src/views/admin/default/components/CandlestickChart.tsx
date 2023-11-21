@@ -3,17 +3,59 @@ import { Box, Button, Flex, Icon, Text, useColorModeValue } from '@chakra-ui/rea
 // Custom components
 import Card from 'components/card/Card';
 import LineChart from 'components/charts/LineChart';
+import CandlestickChart from 'components/charts/CandlestickChart'
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 import { IoCheckmarkCircle } from 'react-icons/io5';
 import { MdBarChart, MdOutlineCalendarToday } from 'react-icons/md';
 // Assets
 import { RiArrowUpSFill } from 'react-icons/ri';
-import { lineChartDataTotalSpent, lineChartOptionsTotalSpent, lineChartOptionsYearRev, lineChartOptionsMonthRev, AAPLStockReturnsY, ACNStockReturnsY } from 'variables/financialcharts';
+import { SampleCandle, SampleCandleOptions, lineChartDataTotalSpent, lineChartOptionsTotalSpent, lineChartOptionsYearRev, lineChartOptionsMonthRev, AAPLStockReturnsY, ACNStockReturnsY } from 'variables/financialcharts';
 import Menu from 'components/menu/FinancialMenu';
+import Papa from "papaparse";
+
+const allowedExtensions = ["csv"];
 
 export default function TotalSpent(props: { [x: string]: any }) {
 	const { ...rest } = props;
+	
+	
+
+
+
+	// useEffect(() => {
+	// 	fetch('/data/top_tech_company/List of SP 500 companies.csv')
+	// 	  .then(response => response.text())
+	// 	  .then(csvString => {
+	// 		Papa.parse<CompanyData>(csvString, {
+	// 		  header: true,
+	// 		  skipEmptyLines: true,
+	// 		  complete: (results) => {
+	// 			const data = results.data as CompanyData[];
+	
+	// 			// Calculate sector counts
+	// 			const sectorCounts = data.reduce((acc, { Sector }) => {
+	// 			  acc[Sector] = (acc[Sector] || 0) + 1;
+	// 			  return acc;
+	// 			}, {} as Record<string, number>);
+	
+	// 			// Calculate total number of entries
+	// 			const total = data.length;
+	
+	// 			// Calculate sector percentages
+	// 			const sectorsPercentage = Object.entries(sectorCounts).map(([sector, count]) => ({
+	// 			  sector,
+	// 			  percentage: (count / total) * 100,
+	// 			}));
+	
+	// 			// Sort by percentage descending
+	// 			sectorsPercentage.sort((a, b) => b.percentage - a.percentage);
+	// 			setSectorPercentages(sectorsPercentage);
+	// 		  }
+	// 		});
+	// 	  });
+	//   }, []);
+
 
 	// Chakra Color Mode
 
@@ -59,7 +101,7 @@ export default function TotalSpent(props: { [x: string]: any }) {
 					</Flex>
 				</Flex>
 				<Box minH='260px' minW='75%' mt='auto'>
-					<LineChart chartData={AAPLStockReturnsY} chartOptions={lineChartOptionsYearRev} />
+					<CandlestickChart chartData={SampleCandle} chartOptions={SampleCandleOptions} />
 				</Box>
 			</Flex>
 		</Card>
