@@ -237,8 +237,8 @@ export const lineChartOptionsYearRev: ApexOptions = {
 export const SampleCandle = [
   {
     data: [{
-      x: new Date(1538778600000),
-      y: [6629.81, 6650.5, 6623.04, 6633.33]
+      x: new Date('2018/10/04'),
+      y: [5000.81, 5000.5, 5000.04, 5000.33]
     },
     {
       x: new Date(1538780400000),
