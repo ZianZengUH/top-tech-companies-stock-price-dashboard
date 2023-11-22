@@ -14,6 +14,22 @@ import {
   Text,
   useColorMode,
   useColorModeValue,
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  Radio,
+  RadioGroup,
+  Stack,
+  useDisclosure,
+  Input,
+  FormLabel,
+  Textarea,
+  Checkbox, 
+  CheckboxGroup
 } from '@chakra-ui/react';
 // Custom Components
 import { Image } from 'components/image/Image';
@@ -27,6 +43,7 @@ import { FaEthereum } from 'react-icons/fa';
 import { IoMdMoon, IoMdSunny } from 'react-icons/io';
 import { MdInfoOutline, MdNotificationsNone } from 'react-icons/md';
 import routes from 'routes';
+import React from 'react';
 export default function HeaderLinks(props: { secondary: boolean }) {
   const { secondary } = props;
   const { colorMode, toggleColorMode } = useColorMode();
@@ -43,6 +60,9 @@ export default function HeaderLinks(props: { secondary: boolean }) {
     '14px 17px 40px 4px rgba(112, 144, 176, 0.18)',
     '14px 17px 40px 4px rgba(112, 144, 176, 0.06)',
   );
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const firstField = React.useRef()
+
   const borderButton = useColorModeValue('secondaryGray.500', 'whiteAlpha.200');
   const handleSearch = (query: string) => {
     // Replace this with your actual search logic
@@ -62,7 +82,53 @@ export default function HeaderLinks(props: { secondary: boolean }) {
       borderRadius="30px"
       boxShadow={shadow}
     >
-      <SearchBar
+      <Button colorScheme="brand" onClick={onOpen}>
+        Search
+      </Button>
+      <Drawer
+        isOpen={isOpen}
+        placement="left"
+        onClose={onClose}
+        initialFocusRef={firstField}
+      >
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerHeader>Filter Panel</DrawerHeader>
+          <DrawerBody>
+
+            <Stack spacing="24px">
+              <Box>
+                <FormLabel htmlFor="username">Search</FormLabel>
+                <Input
+                  ref={firstField}
+                  id="username"
+                  placeholder="Search here"
+                />
+              </Box>
+
+              <Box>
+                <FormLabel htmlFor="filter">Filter</FormLabel>
+      <CheckboxGroup defaultValue={['barchart', 'piechart']} >
+      <Stack spacing={[1, 5]} direction={'column'}>
+      <Checkbox colorScheme='blue' value='barchart'>Bar Chart</Checkbox>
+      <Checkbox colorScheme='blue' value='piechart'>Pie Chart</Checkbox>
+      </Stack>
+        </CheckboxGroup>
+              </Box>
+
+              </Stack>
+          </DrawerBody>
+          <DrawerFooter>
+            <Button variant="outline" mr={3} onClick={onClose}>
+              Cancel
+            </Button>
+            <Button colorScheme="brand">Save</Button>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
+
+      {/* <SearchBar
         mb={() => {
           if (secondary) {
             return { base: '10px', md: 'unset' };
@@ -70,9 +136,10 @@ export default function HeaderLinks(props: { secondary: boolean }) {
           return 'unset';
         }}
         me="10px"
+        placeholder='Search'
         borderRadius="30px"
         onSearch={handleSearch}
-      />
+      /> */}
       <Flex
         bg={ethBg}
         display={secondary ? 'flex' : 'none'}
