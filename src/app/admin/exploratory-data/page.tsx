@@ -3,6 +3,9 @@ import DevelopmentTable from 'views/admin/dataTables/components/DevelopmentTable
 import SectorPercentageTable from 'views/admin/dataTables/components/SectorPercentageTable';
 import PieChart from 'views/admin/dataTables/components/PieChart';
 import PeRatioBarChart from 'views/admin/dataTables/components/PeRatioBarChart';
+import YearlyReturnsChart from 'views/admin/dataTables/components/YearlyReturnsChart';
+import StockStandardDeviationChart from 'views/admin/dataTables/components/StockStandardDeviationChart';
+import YearlyStockStandardDeviationChart from 'views/admin/dataTables/components/YearlyStockStandardDeviationChart';
 
 import CheckTable from 'views/admin/dataTables/components/CheckTable';
 import ColumnsTable from 'views/admin/dataTables/components/ColumnsTable';
@@ -163,11 +166,25 @@ export default function ExploratoryDataCharts() {
       >
         {/* ... other tables and charts ... */}
  
-        <DevelopmentTable tableData={tableDataDevelopment} />
+        {/* <DevelopmentTable tableData={tableDataDevelopment} /> */}
         {/* TODO: Change the style of table to similar to Horizon UI */}
         <SectorPercentageTable sectorData={sectorPercentages} />
+
         {marketCapData.length > 0 && <PieChart data={marketCapData} />}
+
+        {/* TODO: PeRatioBarChart's may not be correct*/}
+
         <PeRatioBarChart data={topTechStocksPE} />
+
+        {/* TODO: Yearly Best and Worst Return may not be correct, in validEntries, it may filter out companies that contain null or undefined entries */}
+        <YearlyReturnsChart isBest={true} />
+        <YearlyReturnsChart isBest={false} />
+
+        {/* Daily Stock Standard Deviation Chart */}
+        <StockStandardDeviationChart />
+        <YearlyStockStandardDeviationChart />
+
+
       </SimpleGrid>
     </Box>
   );
