@@ -44,6 +44,7 @@ import { IoMdMoon, IoMdSunny } from 'react-icons/io';
 import { MdInfoOutline, MdNotificationsNone } from 'react-icons/md';
 import routes from 'routes';
 import React from 'react';
+
 export default function HeaderLinks(props: { secondary: boolean }) {
   const { secondary } = props;
   const { colorMode, toggleColorMode } = useColorMode();
@@ -60,8 +61,8 @@ export default function HeaderLinks(props: { secondary: boolean }) {
     '14px 17px 40px 4px rgba(112, 144, 176, 0.18)',
     '14px 17px 40px 4px rgba(112, 144, 176, 0.06)',
   );
-  const { isOpen, onOpen, onClose } = useDisclosure()
-  const firstField = React.useRef()
+  // const { isOpen, onOpen, onClose } = useDisclosure()
+  // const firstField = React.useRef()
 
   const borderButton = useColorModeValue('secondaryGray.500', 'whiteAlpha.200');
   const handleSearch = (query: string) => {
