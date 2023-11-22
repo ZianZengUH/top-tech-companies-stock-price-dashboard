@@ -82,51 +82,6 @@ export default function HeaderLinks(props: { secondary: boolean }) {
       borderRadius="30px"
       boxShadow={shadow}
     >
-      <Button colorScheme="brand" onClick={onOpen}>
-        Search
-      </Button>
-      <Drawer
-        isOpen={isOpen}
-        placement="left"
-        onClose={onClose}
-        initialFocusRef={firstField}
-      >
-        <DrawerOverlay />
-        <DrawerContent>
-          <DrawerCloseButton />
-          <DrawerHeader>Filter Panel</DrawerHeader>
-          <DrawerBody>
-
-            <Stack spacing="24px">
-              <Box>
-                <FormLabel htmlFor="username">Search</FormLabel>
-                <Input
-                  ref={firstField}
-                  id="username"
-                  placeholder="Search here"
-                />
-              </Box>
-
-              <Box>
-                <FormLabel htmlFor="filter">Filter</FormLabel>
-      <CheckboxGroup defaultValue={['barchart', 'piechart']} >
-      <Stack spacing={[1, 5]} direction={'column'}>
-      <Checkbox colorScheme='blue' value='barchart'>Bar Chart</Checkbox>
-      <Checkbox colorScheme='blue' value='piechart'>Pie Chart</Checkbox>
-      </Stack>
-        </CheckboxGroup>
-              </Box>
-
-              </Stack>
-          </DrawerBody>
-          <DrawerFooter>
-            <Button variant="outline" mr={3} onClick={onClose}>
-              Cancel
-            </Button>
-            <Button colorScheme="brand">Save</Button>
-          </DrawerFooter>
-        </DrawerContent>
-      </Drawer>
 
       {/* <SearchBar
         mb={() => {
