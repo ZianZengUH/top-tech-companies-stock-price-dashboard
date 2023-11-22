@@ -15,6 +15,101 @@ export const lineChartDataTotalSpent = [
   },
 ];
 
+export const barChartOptionsHisto: ApexGeneric = {
+  chart: {
+    toolbar: {
+      show: false,
+    },
+  },
+  tooltip: {
+    style: {
+      fontSize: "12px",
+      fontFamily: undefined,
+    },
+    onDatasetHover: {
+      style: {
+        fontSize: "12px",
+        fontFamily: undefined,
+      },
+    },
+    theme: "dark",
+  },
+  xaxis: {
+    show: false,
+    labels: {
+      show: true,
+      style: {
+        colors: "#A3AED0",
+        fontSize: "14px",
+        fontWeight: "500",
+      },
+    },
+    axisBorder: {
+      show: false,
+    },
+    axisTicks: {
+      show: false,
+    },
+  },
+  yaxis: {
+    show: false,
+    color: "black",
+    labels: {
+      show: true,
+      style: {
+        colors: "#CBD5E0",
+        fontSize: "14px",
+      },
+    },
+  },
+  grid: {
+    show: false,
+    strokeDashArray: 5,
+    yaxis: {
+      lines: {
+        show: true,
+      },
+    },
+    xaxis: {
+      lines: {
+        show: false,
+      },
+    },
+  },
+  fill: {
+    type: "gradient",
+    gradient: {
+      type: "vertical",
+      shadeIntensity: 1,
+      opacityFrom: 0.7,
+      opacityTo: 0.9,
+      colorStops: [
+        [
+          {
+            offset: 0,
+            color: "#4318FF",
+            opacity: 1,
+          },
+          {
+            offset: 100,
+            color: "rgba(67, 24, 255, 1)",
+            opacity: 0.28,
+          },
+        ],
+      ],
+    },
+  },
+  dataLabels: {
+    enabled: false,
+  },
+  plotOptions: {
+    bar: {
+      borderRadius: 10,
+      columnWidth: "40px",
+    },
+  },
+};
+
 export const lineChartOptionsTotalSpent: ApexOptions = {
   chart: {
     toolbar: {
@@ -1176,7 +1271,7 @@ export const ZSStockReturnsM = [
 export const AAPLStockReturnsY = [
   {
     name: "Yearly Revenue",
-    data: [null, 0.8115060957572298, 0.11566199879091954, 0.029967964428325056, 0.7698737120461974, 0.40086544258588663, 0.5737849475693648, -0.1563202187172117, 0.39953174670192215, 0.3232874986534666, -0.1105231059358962, 0.46057402364205147, 0.2748778482096279, 0.12341480756724366, 0.6072604072363743],
+    data: [{x: '05/06/2014', y: 6.00},{x: '05/07/2014', y: 20.35}, {x: '05/08/2014', y: 3.55}],
   },
 ];
 
