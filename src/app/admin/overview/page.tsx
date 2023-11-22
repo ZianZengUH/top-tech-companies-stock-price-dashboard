@@ -53,7 +53,7 @@ interface PeRatioData {
   value: number;
 }
 
-export default function ExploratoryDataCharts() {
+export default function OverviewCharts() {
 
   /*
    Sector Percentages Table

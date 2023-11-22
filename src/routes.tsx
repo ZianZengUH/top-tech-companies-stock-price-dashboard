@@ -40,10 +40,10 @@ const routes: IRoute[] = [
   //   secondary: true,
   // },
   {
-    name: 'Exploratory Data',
+    name: 'Overview',
     layout: '/admin',
     icon: <Icon as={MdBarChart} width="20px" height="20px" color="inherit" />,
-    path: '/exploratory-data',
+    path: '/overview',
   },
   // {
   //   name: 'Profile',
