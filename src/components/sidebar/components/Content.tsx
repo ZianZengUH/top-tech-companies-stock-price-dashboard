@@ -17,7 +17,7 @@ import { HSeparator } from 'components/separator/Separator';
 //   Custom components
 import Brand from 'components/sidebar/components/Brand';
 import Links from 'components/sidebar/components/Links';
-import React from 'react';
+import React, { useState } from 'react';
 import { MdBuild } from 'react-icons/md';
 import { IRoute } from 'types/navigation';
 
@@ -31,6 +31,10 @@ function SidebarContent(props: SidebarContentProps) {
 	const { routes } = props;
 	const { isOpen, onOpen, onClose } = useDisclosure()
 	const firstField = React.useRef()
+	const [isChartVisible, setIsChartVisible] = useState(true);
+	const toggleChartVisibility = () => {
+		setIsChartVisible(!isChartVisible);
+	  };
 	// SIDEBAR
 	return (
 		<Flex direction='column' height='100%' pt='25px' borderRadius='30px'>
@@ -65,13 +69,12 @@ function SidebarContent(props: SidebarContentProps) {
 								<FormLabel htmlFor="filter">Filter</FormLabel>
 					<CheckboxGroup defaultValue={['table','barchart', 'piechart']} >
 					<Stack spacing={[1, 5]} direction={'column'}>
-					<Checkbox colorScheme='blue' value='table'>Pie Chart</Checkbox>
+					<Checkbox colorScheme='blue' value='table' >Pie Chart</Checkbox>
 					<Checkbox colorScheme='blue' value='barchart'>Bar Chart</Checkbox>
 					<Checkbox colorScheme='blue' value='piechart'>Pie Chart</Checkbox>
 					</Stack>
 						</CheckboxGroup>
 							</Box>
-
 							</Stack>
 						</DrawerBody>
 						<DrawerFooter>
