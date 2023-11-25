@@ -71,11 +71,6 @@ const StockStandardDeviationChart: React.FC = () => {
       });
     };
 
-    // const calculateStandardDeviation = (values: number[]) => {
-    //   const mean = values.reduce((acc, val) => acc + val, 0) / values.length;
-    //   const variance = values.reduce((acc, val) => acc + (val - mean) ** 2, 0) / values.length;
-    //   return Math.sqrt(variance);
-    // };
     const calculateStandardDeviation = (values: number[]) => {
       // Filter out non-numeric or invalid values
       const validValues = values.filter(value => isFinite(value));

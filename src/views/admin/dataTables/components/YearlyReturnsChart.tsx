@@ -154,7 +154,7 @@ const YearlyReturnsChart: React.FC<YearlyReturnsChartProps> = ({ isBest }) => {
         const validResults = results.filter(r => r.yearlyReturn !== null);
         validResults.sort((a, b) => isBest ? b.yearlyReturn! - a.yearlyReturn! : a.yearlyReturn! - b.yearlyReturn!);
         setYearlyReturns(validResults.slice(0, 10)); // Get the top 10 results for best or worst
-        console.log('Yearly Returns State Updated: ', validResults.slice(0, 10));
+        // console.log('Yearly Returns State Updated: ', validResults.slice(0, 10));
         setChartOptions(prevOptions => ({
           ...prevOptions,
           xaxis: {

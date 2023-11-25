@@ -6,6 +6,7 @@ import PeRatioBarChart from 'views/admin/dataTables/components/PeRatioBarChart';
 import YearlyReturnsChart from 'views/admin/dataTables/components/YearlyReturnsChart';
 import StockStandardDeviationChart from 'views/admin/dataTables/components/StockStandardDeviationChart';
 import YearlyStockStandardDeviationChart from 'views/admin/dataTables/components/YearlyStockStandardDeviationChart';
+import MostVolatileStocksChart from 'views/admin/dataTables/components/MostVolatileStocksChart';
 
 import CheckTable from 'views/admin/dataTables/components/CheckTable';
 import ColumnsTable from 'views/admin/dataTables/components/ColumnsTable';
@@ -183,6 +184,7 @@ export default function OverviewCharts() {
         {/* Daily Stock Standard Deviation Chart */}
         <StockStandardDeviationChart />
         <YearlyStockStandardDeviationChart />
+        <MostVolatileStocksChart />
 
 
       </SimpleGrid>
