@@ -17,10 +17,12 @@ import tableDataColumns from 'views/admin/dataTables/variables/tableDataColumns'
 import tableDataComplex from 'views/admin/dataTables/variables/tableDataComplex';
 import React, { useState, useEffect } from 'react';
 import Papa from 'papaparse';
-import { Box, SimpleGrid, Table, Thead, Tbody, Tr, Th, Td, useColorModeValue} from '@chakra-ui/react';
+import { Box, SimpleGrid, Table, Thead, Tbody, Tr, Th, Td, useColorModeValue, Checkbox, CheckboxGroup, Stack} from '@chakra-ui/react';
 import Card from 'components/card/Card';
 import AdminLayout from 'layouts/admin';
 import ApexCharts from 'apexcharts'
+import SidebarContent from 'components/sidebar/components/Content';
+import routes from 'components/sidebar/components/Content';
 
 
 // Define the type for the formatted data used in the chart.
@@ -59,10 +61,11 @@ export default function OverviewCharts() {
   /*
    Sector Percentages Table
   */
+   const [TableVisible, setTableVisible] = useState(true);
   const [sectorPercentages, setSectorPercentages] = useState<{ sector: string; percentage: number }[]>([]);
   // Define a background color for the card based on the color mode
   const cardBg = useColorModeValue('white', 'gray.700');
-  
+
   useEffect(() => {
     fetch('/data/top_tech_company/List of SP 500 companies.csv')
       .then(response => response.text())
@@ -100,6 +103,7 @@ export default function OverviewCharts() {
   /*
    Market Cap Pie Chart
   */
+   const [PieChartVisible, setPieChartVisible] = useState(true);
   const [marketCapData, setMarketCapData] = useState([]);
 
   useEffect(() => {
@@ -126,6 +130,7 @@ export default function OverviewCharts() {
   /*
    Top Tech Stocks PE Bar Chart
   */
+  const [BarChartVisible, setBarChartVisible] = useState(true);
   const [topTechStocksPE, setTopTechStocksPE] = useState<PeRatioData[]>([]);
   useEffect(() => {
     async function fetchData() {
@@ -160,6 +165,14 @@ export default function OverviewCharts() {
 
   return (
     <Box pt={{ base: '130px', md: '80px', xl: '80px' }}>
+    	<CheckboxGroup defaultValue={['piechart','barchart','table']} >
+			<Stack spacing={[1, 5]} direction={'row'}>
+      <Checkbox colorScheme='blue' value='barchart' isChecked={BarChartVisible} onChange={() => setBarChartVisible(!BarChartVisible)} >Bar Chart</Checkbox>
+			<Checkbox colorScheme='blue' value='piechart' isChecked={PieChartVisible} onChange={() => setPieChartVisible(!PieChartVisible)} >Pie Chart</Checkbox>
+			<Checkbox colorScheme='blue' value='table' isChecked={TableVisible} onChange={() => setTableVisible(!TableVisible)} >Table</Checkbox>
+			</Stack>
+			</CheckboxGroup>
+
       <SimpleGrid
         mb="20px"
         columns={{ sm: 1, md: 2 }}
@@ -169,23 +182,24 @@ export default function OverviewCharts() {
  
         {/* <DevelopmentTable tableData={tableDataDevelopment} /> */}
         {/* TODO: Change the style of table to similar to Horizon UI */}
-        <SectorPercentageTable sectorData={sectorPercentages} />
+        {TableVisible && <SectorPercentageTable sectorData={sectorPercentages} />}
 
-        {marketCapData.length > 0 && <PieChart data={marketCapData} />}
+        {marketCapData.length > 0 && PieChartVisible && <PieChart data={marketCapData} />}
 
         {/* TODO: PeRatioBarChart's may not be correct*/}
 
-        <PeRatioBarChart data={topTechStocksPE} />
+        {/* <PeRatioBarChart data={topTechStocksPE} /> */}
+        {BarChartVisible && <PeRatioBarChart data={topTechStocksPE} />}
 
         {/* TODO: Yearly Best and Worst Return may not be correct, in validEntries, it may filter out companies that contain null or undefined entries */}
-        <YearlyReturnsChart isBest={true} />
-        <YearlyReturnsChart isBest={false} />
+        {BarChartVisible && <YearlyReturnsChart isBest={true} />}
+        {BarChartVisible && <YearlyReturnsChart isBest={false} />}
 
         {/* Daily Stock Standard Deviation Chart */}
-        <StockStandardDeviationChart />
-        <YearlyStockStandardDeviationChart />
-        <MostVolatileStocksChart />
 
+        {BarChartVisible && <StockStandardDeviationChart />}
+        {BarChartVisible && <YearlyStockStandardDeviationChart />}
+        <MostVolatileStocksChart />
 
       </SimpleGrid>
     </Box>
