@@ -41,8 +41,12 @@ import {
   MdBarChart,
   MdFileCopy,
 } from 'react-icons/md';
-import TotalSpent from 'views/admin/default/components/TotalSpent';
-import Finances from 'views/admin/default/components/Finances';
+import LineCumuRet from 'views/admin/default/components/Financial/LineCumuRet';
+import LineCumuRetM from 'views/admin/default/components/Financial/LineCumuRetM';
+import LineCumuRetY from 'views/admin/default/components/Financial/LineCumuRetY';
+import LineStockPrice from 'views/admin/default/components/Financial/LineStockPrice';
+import HistoStockReturn from 'views/admin/default/components/Financial/HistoStockReturn';
+import CandlestickChart from 'views/admin/default/components/Financial/CandlestickChart';
 
 
 // Assets
@@ -142,13 +146,23 @@ export default function Default() {
         />
       </SimpleGrid>
 
-      <SimpleGrid columns={{ base: 1, md: 2, xl: 2 }} gap="20px" mb="20px">
-        <Finances />
-        <Finances />
+      <SimpleGrid columns={{ base: 1, md: 1, xl: 1 }} gap="20px" mb="20px">
+        <LineCumuRet />
       </SimpleGrid>
-      <SimpleGrid columns={{ base: 1, md: 2, xl: 2 }} gap="20px" mb="20px">
-        <Finances />
-        <Finances />
+      <SimpleGrid columns={{ base: 1, md: 1, xl: 1 }} gap="20px" mb="20px">
+        <LineCumuRetM />
+      </SimpleGrid>
+      <SimpleGrid columns={{ base: 1, md: 1, xl: 1 }} gap="20px" mb="20px">
+        <LineCumuRetY />
+      </SimpleGrid>
+      <SimpleGrid columns={{ base: 1, md: 1, xl: 1 }} gap="20px" mb="20px">
+        <LineStockPrice />
+      </SimpleGrid>
+      <SimpleGrid columns={{ base: 1, md: 1, xl: 1 }} gap="20px" mb="20px">
+        <HistoStockReturn />
+      </SimpleGrid>
+      <SimpleGrid columns={{ base: 1, md: 1, xl: 1 }} gap="20px" mb="20px">
+        <CandlestickChart />
       </SimpleGrid>
     </Box>
   );
