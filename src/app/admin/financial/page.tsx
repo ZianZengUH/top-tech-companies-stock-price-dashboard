@@ -47,6 +47,7 @@ import LineCumuRetY from 'views/admin/default/components/Financial/LineCumuRetY'
 import LineStockPrice from 'views/admin/default/components/Financial/LineStockPrice';
 import HistoStockReturn from 'views/admin/default/components/Financial/HistoStockReturn';
 import CandlestickChart from 'views/admin/default/components/Financial/CandlestickChart';
+import React from 'react';
 
 
 // Assets
@@ -54,7 +55,7 @@ import Usa from 'img/dashboards/usa.png';
 
 export default function Default() {
   // Chakra Color Mode
-
+  const[value, setValue] = React.useState('AAPL');
   const brandColor = useColorModeValue('brand.500', 'white');
   const boxBg = useColorModeValue('secondaryGray.300', 'whiteAlpha.100');
   const tickers = ["AAPL","ACN","ADBE","ADI","ADSK","AKAM","AMAT","AMD","ANET","ANSS","APH","ASML","AVGO","AVLR","BR","CAJ","CCC","CDNS",
@@ -64,8 +65,10 @@ export default function Default() {
   "TEAM","TEL","TER","TRMB","TSM","TXN","TYL","U","UBER","UI","UMC","VMW","VRSN","WDAY","WIT","WORK","XLNX","ZBRA","ZEN","ZI","ZS"];
 
   const tickerOptions = tickers.map((ticker) =>
-		<option value={ticker}>{ticker}</option>
+		  <option value={ticker}>{ticker}</option>
 	)
+
+
 
   return (
     <Box pt={{ base: '130px', md: '80px', xl: '80px' }}>
@@ -77,33 +80,36 @@ export default function Default() {
         <MiniStatistics
           endContent={
             <Flex me="50px" mt="20px">
-              <Select placeholder='Company'>
-                {tickerOptions}
+              <Select placeholder='AAPL'
+                value = {value}
+                onChange={(e) => setValue(e.target.value)}
+              >
+              {tickerOptions}
               </Select>
             </Flex>
           }
           name="Company"
-          value="AAPL"
+          value={value}
         />
       </SimpleGrid>
 
       {/* <SimpleGrid columns={{ base: 1, md: 1, xl: 1 }} gap="20px" mb="20px">
-        <LineCumuRet />
+        <LineCumuRet tick={value}/>
       </SimpleGrid> */}
       <SimpleGrid columns={{ base: 1, md: 1, xl: 1 }} gap="20px" mb="20px">
-        <LineCumuRetM />
+        <LineCumuRetM tick={value}/>
       </SimpleGrid>
       <SimpleGrid columns={{ base: 1, md: 1, xl: 1 }} gap="20px" mb="20px">
-        <LineCumuRetY />
+        <LineCumuRetY tick={value}/>
       </SimpleGrid>
       <SimpleGrid columns={{ base: 1, md: 1, xl: 1 }} gap="20px" mb="20px">
-        <LineStockPrice />
+        <LineStockPrice tick={value}/>
       </SimpleGrid>
       <SimpleGrid columns={{ base: 1, md: 1, xl: 1 }} gap="20px" mb="20px">
-        <HistoStockReturn />
+        <HistoStockReturn tick={value}/>
       </SimpleGrid>
       <SimpleGrid columns={{ base: 1, md: 1, xl: 1 }} gap="20px" mb="20px">
-        <CandlestickChart />
+        <CandlestickChart tick={value}/>
       </SimpleGrid>
     </Box>
   );

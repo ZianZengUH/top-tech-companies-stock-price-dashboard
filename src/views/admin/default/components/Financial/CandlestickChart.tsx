@@ -1127,8 +1127,10 @@ import {
   } from 'variables/financialCharts/ohlc';
 import { SampleCandleOptions, lineChartDataTotalSpent, lineChartOptionsTotalSpent, lineChartOptionsYearRev, lineChartOptionsMonthRev} from 'variables/financialcharts';
 
-export default function LineCumuRet(props: { [x: string]: any }) {
-	const { ...rest } = props;
+interface currentTick {
+	tick: string;
+}
+export default function LineCumuRet({tick}: currentTick) {
 
 
 	// Chakra Color Mode
@@ -1143,6 +1145,8 @@ export default function LineCumuRet(props: { [x: string]: any }) {
 
 	const [ mounted, setMounted ] = useState(false);
 
+	const chart : string = 'candlestick' + tick + '2020';
+	
 	useEffect(() => {
 		const timeout = setTimeout(() => {
 			setMounted(true);
@@ -1153,8 +1157,9 @@ export default function LineCumuRet(props: { [x: string]: any }) {
 	}, []);
 
 	return (
-		<Card justifyContent='center' alignItems='center' flexDirection='column' w='100%' mb='0px' {...rest}>
+		<Card justifyContent='center' alignItems='center' flexDirection='column' w='100%' mb='0px'>
 			<Text fontSize='50px'>Candlestick (Open, High, Low, Close)</Text>
+			<Text fontSize='50px'>{chart}</Text>
 			<Box minH='260px' minW='75%' mt='auto'>
 			<CandlestickChart chartData={candlestickAAPL2006} chartOptions={SampleCandleOptions} />
 			</Box>

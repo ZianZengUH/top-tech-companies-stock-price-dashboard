@@ -1125,8 +1125,10 @@ import {
   } from 'variables/financialCharts/adjClose';
 import { lineChartDataTotalSpent, lineChartOptionsTotalSpent, lineChartOptionsYearRev, lineChartOptionsMonthRev} from 'variables/financialcharts';
 
-export default function LineStockPrice(props: { [x: string]: any }) {
-	const { ...rest } = props;
+interface currentTick {
+	tick: string;
+}
+export default function LineStockPrice({tick}: currentTick) {
 
 
 	// Chakra Color Mode
@@ -1141,6 +1143,8 @@ export default function LineStockPrice(props: { [x: string]: any }) {
 
 	const [ mounted, setMounted ] = useState(false);
 
+	const chart : string = 'adjReturns' + tick + '2020';
+
 	useEffect(() => {
 		const timeout = setTimeout(() => {
 			setMounted(true);
@@ -1151,8 +1155,9 @@ export default function LineStockPrice(props: { [x: string]: any }) {
 	}, []);
 
 	return (
-		<Card justifyContent='center' alignItems='center' flexDirection='column' w='100%' mb='0px' {...rest}>
+		<Card justifyContent='center' alignItems='center' flexDirection='column' w='100%' mb='0px'>
 				<Text fontSize='50px'>Stock Price</Text>
+				<Text fontSize='50px'>{chart}</Text>
 				<Box minH='260px' minW='75%' mt='auto'>
 					<LineChart chartData={adjReturnsAAPL2006} chartOptions={lineChartOptionsYearRev} />
 				</Box>
