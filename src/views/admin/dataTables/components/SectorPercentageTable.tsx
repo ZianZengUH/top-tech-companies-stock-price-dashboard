@@ -1,7 +1,7 @@
-import { Box, Flex, Progress, Table, Tbody, Td, Text, Th, Thead, Tr, useColorModeValue } from '@chakra-ui/react';
+import { Box, Flex, Progress, Table, Tbody, Td, Text, Th, Thead, Tr, useColorModeValue, Input } from '@chakra-ui/react';
 import { createColumnHelper, useReactTable, getCoreRowModel, flexRender } from '@tanstack/react-table';
 import Card from 'components/card/Card';
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import Menu from 'components/menu/MainMenu';
 
 type SectorRow = {
@@ -30,9 +30,17 @@ const columns = [
 export default function SectorPercentageTable(props: { sectorData: SectorRow[] }) {
   const { sectorData } = props;
   const textColor = useColorModeValue('secondaryGray.900', 'white');
+  const [searchKeyword, setSearchKeyword] = useState('');
+
+  const filteredSectorData = useMemo(() => {
+    // Filter your sectorData based on the searchKeyword
+    return sectorData.filter(item =>
+      item.sector.toLowerCase().includes(searchKeyword.toLowerCase())
+    );
+  }, [searchKeyword, sectorData]);
 
   const tableInstance = useReactTable({
-    data: sectorData,
+    data: filteredSectorData,
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
@@ -44,6 +52,14 @@ export default function SectorPercentageTable(props: { sectorData: SectorRow[] }
         <Text color={textColor} fontSize='22px' fontWeight='700' lineHeight='100%'>
           Percentage Per Sector
         </Text>
+        <Input
+          placeholder="Search"
+          value={searchKeyword}
+          onChange={(e) => setSearchKeyword(e.target.value)}
+          mb="-1"
+          style={{ width: '150px' }}
+          ml="-2"
+        />
 				<Menu />
 			</Flex>
 

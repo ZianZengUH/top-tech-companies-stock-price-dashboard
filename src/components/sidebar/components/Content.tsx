@@ -41,7 +41,7 @@ function SidebarContent(props: SidebarContentProps) {
 			<Brand />
 			<Stack direction='column' mt='8px' alignItems='center'>
 				<Box ps='20px' pe={{ lg: '16px', '2xl': '16px' }} >
-				<Button leftIcon={<MdBuild />} onClick={onOpen}>
+				{/* <Button leftIcon={<MdBuild />} onClick={onOpen}>
        				 Tool bar
       				</Button>
 					<Drawer
@@ -84,7 +84,7 @@ function SidebarContent(props: SidebarContentProps) {
 							<Button colorScheme="brand">Save</Button>
 						</DrawerFooter>
 						</DrawerContent>
-					</Drawer>
+					</Drawer> */}
 				</Box>
 			</Stack>
 			

@@ -16,7 +16,7 @@ import tableDataColumns from 'views/admin/dataTables/variables/tableDataColumns'
 import tableDataComplex from 'views/admin/dataTables/variables/tableDataComplex';
 import React, { useState, useEffect } from 'react';
 import Papa from 'papaparse';
-import { Box, SimpleGrid, Table, Thead, Tbody, Tr, Th, Td, useColorModeValue, Checkbox, CheckboxGroup, Stack} from '@chakra-ui/react';
+import { Box, SimpleGrid, Table, Thead, Tbody, Tr, Th, Td, useColorModeValue, Checkbox, CheckboxGroup, Stack, Input} from '@chakra-ui/react';
 import Card from 'components/card/Card';
 import AdminLayout from 'layouts/admin';
 import ApexCharts from 'apexcharts'
@@ -56,6 +56,8 @@ interface PeRatioData {
 }
 
 export default function ExploratoryDataCharts() {
+  // const [searchKeyword, setSearchKeyword] = useState('');
+  // const [selectedComponent, setSelectedComponent] = useState(null);
 
   /*
    Sector Percentages Table
@@ -155,6 +157,24 @@ export default function ExploratoryDataCharts() {
     fetchData();
   }, []);
 
+  // useEffect(() => {
+  //   // Handle the search logic here
+  //   switch (searchKeyword.toLowerCase()) {
+  //     case 'sectorpercentagetable':
+  //       setSelectedComponent(<SectorPercentageTable sectorData={sectorPercentages} />);
+  //       break;
+  //     case 'piechart':
+  //       setSelectedComponent(marketCapData.length > 0 && PieChartVisible && <PieChart data={marketCapData} />);
+  //       break;
+  //     case 'peratiobarchart':
+  //       setSelectedComponent(BarChartVisible && <PeRatioBarChart data={topTechStocksPE} />);
+  //       break;
+  //     // Add cases for other components
+  //     default:
+  //       setSelectedComponent(null); // No match, set to null
+  //       break;
+  //   }
+  // }, [searchKeyword, sectorPercentages, marketCapData, topTechStocksPE]);
   
   // Calculate the color for the gradient
   const getGradient = (percentage: number) => {
@@ -169,6 +189,11 @@ export default function ExploratoryDataCharts() {
       <Checkbox colorScheme='blue' value='barchart' isChecked={BarChartVisible} onChange={() => setBarChartVisible(!BarChartVisible)} >Bar Chart</Checkbox>
 			<Checkbox colorScheme='blue' value='piechart' isChecked={PieChartVisible} onChange={() => setPieChartVisible(!PieChartVisible)} >Pie Chart</Checkbox>
 			<Checkbox colorScheme='blue' value='table' isChecked={TableVisible} onChange={() => setTableVisible(!TableVisible)} >Table</Checkbox>
+      {/* <Input
+      placeholder="Search..."
+      value={searchKeyword}
+      onChange={(e) => setSearchKeyword(e.target.value.toLowerCase())}
+      /> */}
 			</Stack>
 			</CheckboxGroup>
 
@@ -197,6 +222,7 @@ export default function ExploratoryDataCharts() {
         {/* Daily Stock Standard Deviation Chart */}
         {BarChartVisible && <StockStandardDeviationChart />}
         {BarChartVisible && <YearlyStockStandardDeviationChart />}
+        {/* {selectedComponent} */}
 
       </SimpleGrid>
     </Box>
