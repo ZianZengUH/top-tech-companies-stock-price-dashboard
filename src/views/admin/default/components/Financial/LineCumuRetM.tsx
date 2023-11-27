@@ -1121,7 +1121,7 @@ import {
 	mReturnsZS2019,
 	mReturnsZS2020
   } from 'variables/financialCharts/mReturns';
-import { lineChartDataTotalSpent, lineChartOptionsTotalSpent, lineChartOptionsYearRev, lineChartOptionsMonthRev, AAPLStockReturnsY, ACNStockReturnsY } from 'variables/financialcharts';
+import { lineChartDataTotalSpent, lineChartOptionsTotalSpent, lineChartOptionsYearRev, lineChartOptionsMonthRev} from 'variables/financialcharts';
 
 export default function LineCumuRetM(props: { [x: string]: any }) {
 	const { ...rest } = props;
@@ -1150,8 +1150,9 @@ export default function LineCumuRetM(props: { [x: string]: any }) {
 
 	return (
 		<Card justifyContent='center' alignItems='center' flexDirection='column' w='100%' mb='0px' {...rest}>
+				<Text fontSize='50px'>Cumulative Stock Returns (Monthly)</Text>
 				<Box minH='260px' minW='75%' mt='auto'>
-					<LineChart chartData={mReturnsAAPL2006} chartOptions={lineChartOptionsYearRev} />
+					<LineChart chartData={mReturnsAAPL2006} chartOptions={lineChartOptionsMonthRev} />
 				</Box>
 		</Card>
 	);

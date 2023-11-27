@@ -134,6 +134,7 @@ export default function HistoStockReturn(props: { [x: string]: any }) {
 
 	return (
 		<Card justifyContent='center' alignItems='center' flexDirection='column' w='100%' mb='0px' {...rest}>
+				<Text fontSize='50px'>Frequency of Stock Returns</Text>
 				<Box minH='260px' minW='75%' mt='auto'>
 					<BarChart chartData={histogramAAPL} chartOptions={barChartOptionsHisto} />
 				</Box>

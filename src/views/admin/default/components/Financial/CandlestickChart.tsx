@@ -1125,7 +1125,7 @@ import {
 	candlestickZS2019,
 	candlestickZS2020
   } from 'variables/financialCharts/ohlc';
-import { SampleCandle, SampleCandleOptions, lineChartDataTotalSpent, lineChartOptionsTotalSpent, lineChartOptionsYearRev, lineChartOptionsMonthRev, AAPLStockReturnsY, ACNStockReturnsY } from 'variables/financialcharts';
+import { SampleCandleOptions, lineChartDataTotalSpent, lineChartOptionsTotalSpent, lineChartOptionsYearRev, lineChartOptionsMonthRev} from 'variables/financialcharts';
 
 export default function LineCumuRet(props: { [x: string]: any }) {
 	const { ...rest } = props;
@@ -1154,9 +1154,11 @@ export default function LineCumuRet(props: { [x: string]: any }) {
 
 	return (
 		<Card justifyContent='center' alignItems='center' flexDirection='column' w='100%' mb='0px' {...rest}>
-				<Box minH='260px' minW='75%' mt='auto'>
-				<CandlestickChart chartData={candlestickAAPL2006} chartOptions={SampleCandleOptions} />
-				</Box>
+			<Text fontSize='50px'>Candlestick (Open, High, Low, Close)</Text>
+			<Box minH='260px' minW='75%' mt='auto'>
+			<CandlestickChart chartData={candlestickAAPL2006} chartOptions={SampleCandleOptions} />
+			</Box>
+				
 		</Card>
 	);
 }

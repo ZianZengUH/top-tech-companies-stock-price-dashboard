@@ -1123,7 +1123,7 @@ import {
 	adjReturnsZS2019,
 	adjReturnsZS2020
   } from 'variables/financialCharts/adjClose';
-import { lineChartDataTotalSpent, lineChartOptionsTotalSpent, lineChartOptionsYearRev, lineChartOptionsMonthRev, AAPLStockReturnsY, ACNStockReturnsY } from 'variables/financialcharts';
+import { lineChartDataTotalSpent, lineChartOptionsTotalSpent, lineChartOptionsYearRev, lineChartOptionsMonthRev} from 'variables/financialcharts';
 
 export default function LineStockPrice(props: { [x: string]: any }) {
 	const { ...rest } = props;
@@ -1152,6 +1152,7 @@ export default function LineStockPrice(props: { [x: string]: any }) {
 
 	return (
 		<Card justifyContent='center' alignItems='center' flexDirection='column' w='100%' mb='0px' {...rest}>
+				<Text fontSize='50px'>Stock Price</Text>
 				<Box minH='260px' minW='75%' mt='auto'>
 					<LineChart chartData={adjReturnsAAPL2006} chartOptions={lineChartOptionsYearRev} />
 				</Box>
