@@ -1130,8 +1130,9 @@ import  React from 'react';
 
 interface currentTick {
 	tick: string;
+	name: string;
 }
-export default function LineCumuRet({tick}: currentTick) {
+export default function LineCumuRet({tick, name}: currentTick) {
 
 
 	// Chakra Color Mode
@@ -1149,18 +1150,9 @@ export default function LineCumuRet({tick}: currentTick) {
 	const [ mounted, setMounted ] = useState(false);
 
 	const chart : string = 'candlestick' + tick + '2020';
-	
-	useEffect(() => {
-		const timeout = setTimeout(() => {
-			setMounted(true);
-		}, 3000);
-		return () => {
-			clearTimeout(timeout);
-		};
-	}, []);
 
-	const tickerOptions = years.map((data) => 
-		<option value={data}>{data}</option>
+	const tickerOptions = years.map((data, i) => 
+		<option key={i} value={data}>{data}</option>
 	)
 
 	return (
@@ -1174,7 +1166,7 @@ export default function LineCumuRet({tick}: currentTick) {
               </Select>
             </Flex>
 			<Text fontSize='50px'>Candlestick (Open, High, Low, Close)</Text>
-			<Text fontSize='50px'>{'mReturns' + tick + value}</Text>
+			<Text fontSize='50px'>{'candlestick' + tick + value}</Text>
 			<Box minH='260px' minW='75%' mt='auto'>
 			<CandlestickChart chartData={candlestickAAPL2006} chartOptions={SampleCandleOptions} />
 			</Box>

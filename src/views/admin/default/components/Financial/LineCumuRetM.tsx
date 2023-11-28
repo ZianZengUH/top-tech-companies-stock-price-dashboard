@@ -1126,12 +1126,14 @@ import React from 'react';
 
 interface currentTick {
 	tick: string;
+	name: string;
+
 }
-export default function LineCumuRetM({tick}: currentTick) {
+export default function LineCumuRetM({tick, name}: currentTick) {
 
 
 	// Chakra Color Mode
-	const imports = [ 
+	const names = [ 
 		mReturnsAAPL2006,
 		mReturnsAAPL2007,
 		mReturnsAAPL2008,
@@ -2245,8 +2247,25 @@ export default function LineCumuRetM({tick}: currentTick) {
 		mReturnsZI2020,
 		mReturnsZS2018,
 		mReturnsZS2019,
-		mReturnsZS2020]
-	const years = ['2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020']
+		mReturnsZS2020];
+
+	const names2 = {"mReturnsAAPL2006" : mReturnsAAPL2006,
+	"mReturnsAAPL2007" : mReturnsAAPL2007,
+	"mReturnsAAPL2008" : mReturnsAAPL2008,
+	"mReturnsAAPL2009" : mReturnsAAPL2009,
+	"mReturnsAAPL2010" : mReturnsAAPL2010,
+	"mReturnsAAPL2011" : mReturnsAAPL2011,
+	"mReturnsAAPL2012" : mReturnsAAPL2012,
+	"mReturnsAAPL2013" : mReturnsAAPL2013,
+	"mReturnsAAPL2014" : mReturnsAAPL2014,
+	"mReturnsAAPL2015" : mReturnsAAPL2015,
+	"mReturnsAAPL2016" : mReturnsAAPL2016,
+	"mReturnsAAPL2017" : mReturnsAAPL2017,
+	"mReturnsAAPL2018" : mReturnsAAPL2018,
+	"mReturnsAAPL2019" : mReturnsAAPL2019,
+	"mReturnsAAPL2020" : mReturnsAAPL2020
+	};
+	const years = ['2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020'];
 	const textColor = useColorModeValue('secondaryGray.900', 'white');
 	const textColorSecondary = useColorModeValue('secondaryGray.600', 'white');
 	const boxBg = useColorModeValue('secondaryGray.300', 'whiteAlpha.100');
@@ -2258,19 +2277,10 @@ export default function LineCumuRetM({tick}: currentTick) {
 	const[value, setValue] = React.useState('2020');
 	const [ mounted, setMounted ] = useState(false);
 
-	const chart : string = 'mReturns' + tick + '2020';
+	const chart = "mReturns" + tick + value;
 
-	useEffect(() => {
-		const timeout = setTimeout(() => {
-			setMounted(true);
-		}, 3000);
-		return () => {
-			clearTimeout(timeout);
-		};
-	}, []);
-
-	const tickerOptions = years.map((data) => 
-		<option value={data}>{data}</option>
+	const tickerOptions = years.map((data, i) => 
+		<option key={i} value={data}>{data}</option>
 	)
 
 	return (
@@ -2278,7 +2288,9 @@ export default function LineCumuRetM({tick}: currentTick) {
 				<Flex me="50px" mt="20px">
               <Select placeholder='2020'
                 value = {value}
-                onChange={(e) => setValue(e.target.value)}
+                onChange={(e) => {
+					setValue(e.target.value)
+				}}
               >
               {tickerOptions}
               </Select>

@@ -109,8 +109,9 @@ import { lineChartDataTotalSpent, lineChartOptionsTotalSpent, lineChartOptionsYe
 
 interface currentTick {
 	tick: string;
+	name: string;
 }
-export default function LineCumuRetY({tick}: currentTick) {
+export default function LineCumuRetY({tick, name}: currentTick) {
 
 
 	// Chakra Color Mode
@@ -127,17 +128,8 @@ export default function LineCumuRetY({tick}: currentTick) {
 
 	const chart : string = 'yReturns' + tick;
 
-	useEffect(() => {
-		const timeout = setTimeout(() => {
-			setMounted(true);
-		}, 3000);
-		return () => {
-			clearTimeout(timeout);
-		};
-	}, []);
-
 	return (
-		<Card justifyContent='center' alignItems='center' flexDirection='column' w='100%' mb='0px'>
+		<Card key={4} justifyContent='center' alignItems='center' flexDirection='column' w='100%' mb='0px'>
 				<Text fontSize='50px'>Cumulative Stock Returns (Yearly)</Text>
 				<Text fontSize='50px'>{chart}</Text>
 				<Box minH='260px' minW='75%' mt='auto'>

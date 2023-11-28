@@ -1128,8 +1128,9 @@ import React from 'react';
 
 interface currentTick {
 	tick: string;
+	name: string;
 }
-export default function LineStockPrice({tick}: currentTick) {
+export default function LineStockPrice({tick, name}: currentTick) {
 
 
 	// Chakra Color Mode
@@ -1147,17 +1148,8 @@ export default function LineStockPrice({tick}: currentTick) {
 
 	const chart : string = 'adjReturns' + tick + '2020';
 
-	useEffect(() => {
-		const timeout = setTimeout(() => {
-			setMounted(true);
-		}, 3000);
-		return () => {
-			clearTimeout(timeout);
-		};
-	}, []);
-
-	const tickerOptions = years.map((data) => 
-		<option value={data}>{data}</option>
+	const tickerOptions = years.map((data, i) => 
+		<option key={i} value={data}>{data}</option>
 	)
 
 	return (
@@ -1171,7 +1163,7 @@ export default function LineStockPrice({tick}: currentTick) {
               </Select>
             </Flex>
 				<Text fontSize='50px'>Stock Price</Text>
-				<Text fontSize='50px'>{'mReturns' + tick + value}</Text>
+				<Text fontSize='50px'>{'adjReturns' + tick + value}</Text>
 				<Box minH='260px' minW='75%' mt='auto'>
 					<LineChart chartData={adjReturnsAAPL2006} chartOptions={lineChartOptionsYearRev} />
 				</Box>

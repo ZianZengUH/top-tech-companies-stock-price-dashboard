@@ -109,8 +109,9 @@ import { barChartOptionsHisto } from 'variables/financialcharts';
 
 interface currentTick {
 	tick: string;
+	name: String;
 }
-export default function HistoStockReturn({tick}: currentTick) {
+export default function HistoStockReturn({tick, name}: currentTick) {
 
 
 	// Chakra Color Mode
@@ -127,17 +128,8 @@ export default function HistoStockReturn({tick}: currentTick) {
 
 	const chart : string = 'histogram' + tick;
 
-	useEffect(() => {
-		const timeout = setTimeout(() => {
-			setMounted(true);
-		}, 3000);
-		return () => {
-			clearTimeout(timeout);
-		};
-	}, []);
-
 	return (
-		<Card justifyContent='center' alignItems='center' flexDirection='column' w='100%' mb='0px'>
+		<Card key={2} justifyContent='center' alignItems='center' flexDirection='column' w='100%' mb='0px'>
 				<Text fontSize='50px'>Frequency of Stock Returns</Text>
 				<Text fontSize='50px'>{chart}</Text>
 				<Box minH='260px' minW='75%' mt='auto'>

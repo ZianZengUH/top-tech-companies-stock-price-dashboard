@@ -1127,8 +1127,9 @@ import { lineChartDataTotalSpent, lineChartOptionsTotalSpent, lineChartOptionsYe
 
 interface currentTick {
 	tick: string;
+	name: string;
 }
-export default function LineCumuRet({tick}: currentTick) {
+export default function LineCumuRet({tick, name}: currentTick) {
 
 
 	// Chakra Color Mode
@@ -1144,15 +1145,6 @@ export default function LineCumuRet({tick}: currentTick) {
 	const [ mounted, setMounted ] = useState(false);
 
 	const chart : string = 'dReturns' + tick + '2020';
-
-	useEffect(() => {
-		const timeout = setTimeout(() => {
-			setMounted(true);
-		}, 3000);
-		return () => {
-			clearTimeout(timeout);
-		};
-	}, []);
 
 	return (
 		<Card justifyContent='center' alignItems='center' flexDirection='column' w='100%' mb='0px'>
