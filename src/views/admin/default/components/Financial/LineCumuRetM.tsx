@@ -1129,6 +1129,18 @@ interface currentTick {
 	name: string;
 
 }
+
+interface companies {
+	Date: Date;
+	High: number;
+	Low: number;
+	Open: number;
+	Close: number;
+	Volume: number;
+	AdjClose: number;
+}
+
+
 export default function LineCumuRetM({tick, name}: currentTick) {
 
 
@@ -2282,6 +2294,7 @@ export default function LineCumuRetM({tick, name}: currentTick) {
 	const tickerOptions = years.map((data, i) => 
 		<option key={i} value={data}>{data}</option>
 	)
+
 
 	return (
 		<Card justifyContent='center' alignItems='center' flexDirection='column' w='100%' mb='0px'>
