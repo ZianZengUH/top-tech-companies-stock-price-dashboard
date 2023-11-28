@@ -1,5 +1,5 @@
 // Chakra imports
-import { Box, Button, Flex, Icon, Text, useColorModeValue } from '@chakra-ui/react';
+import { Box, Button, Flex, Icon, Select, Text, useColorModeValue } from '@chakra-ui/react';
 // Custom components
 import Card from 'components/card/Card';
 import LineChart from 'components/charts/LineChart';
@@ -1124,6 +1124,7 @@ import {
 	adjReturnsZS2020
   } from 'variables/financialCharts/adjClose';
 import { lineChartDataTotalSpent, lineChartOptionsTotalSpent, lineChartOptionsYearRev, lineChartOptionsMonthRev} from 'variables/financialcharts';
+import React from 'react';
 
 interface currentTick {
 	tick: string;
@@ -1132,7 +1133,7 @@ export default function LineStockPrice({tick}: currentTick) {
 
 
 	// Chakra Color Mode
-
+	const years = ['2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020'];
 	const textColor = useColorModeValue('secondaryGray.900', 'white');
 	const textColorSecondary = useColorModeValue('secondaryGray.600', 'white');
 	const boxBg = useColorModeValue('secondaryGray.300', 'whiteAlpha.100');
@@ -1141,6 +1142,7 @@ export default function LineStockPrice({tick}: currentTick) {
 	const bgHover = useColorModeValue({ bg: 'secondaryGray.400' }, { bg: 'whiteAlpha.50' });
 	const bgFocus = useColorModeValue({ bg: 'secondaryGray.300' }, { bg: 'whiteAlpha.100' });
 
+	const[value, setValue] = React.useState('2020');
 	const [ mounted, setMounted ] = useState(false);
 
 	const chart : string = 'adjReturns' + tick + '2020';
@@ -1154,10 +1156,22 @@ export default function LineStockPrice({tick}: currentTick) {
 		};
 	}, []);
 
+	const tickerOptions = years.map((data) => 
+		<option value={data}>{data}</option>
+	)
+
 	return (
 		<Card justifyContent='center' alignItems='center' flexDirection='column' w='100%' mb='0px'>
+			<Flex me="50px" mt="20px">
+              <Select placeholder='2020'
+                value = {value}
+                onChange={(e) => setValue(e.target.value)}
+              >
+              {tickerOptions}
+              </Select>
+            </Flex>
 				<Text fontSize='50px'>Stock Price</Text>
-				<Text fontSize='50px'>{chart}</Text>
+				<Text fontSize='50px'>{'mReturns' + tick + value}</Text>
 				<Box minH='260px' minW='75%' mt='auto'>
 					<LineChart chartData={adjReturnsAAPL2006} chartOptions={lineChartOptionsYearRev} />
 				</Box>

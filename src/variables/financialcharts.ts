@@ -115,9 +115,12 @@ export const lineChartOptionsYearRev: ApexOptions = {
 };
 
 export const SampleCandleOptions: ApexOptions = {
-  chart: {
+   chart: {
     type: 'candlestick',
-  }
+    toolbar: {
+      show: false,
+    },
+  },
   // color: ["#7551FF", "#39B8FF"],
 };
 
