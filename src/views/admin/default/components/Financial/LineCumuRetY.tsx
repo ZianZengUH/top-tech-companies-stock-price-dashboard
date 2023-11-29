@@ -130,8 +130,7 @@ export default function LineCumuRetY({tick, name}: currentTick) {
 
 	return (
 		<Card key={4} justifyContent='center' alignItems='center' flexDirection='column' w='100%' mb='0px'>
-				<Text fontSize='50px'>Cumulative Stock Returns (Yearly)</Text>
-				<Text fontSize='50px'>{chart}</Text>
+				<Text fontSize='25px'><b>Yearly Cumulative Returns</b></Text>
 				<Box minH='260px' minW='75%' mt='auto'>
 					<LineChart chartData={yReturnsAAPL} chartOptions={lineChartOptionsYearRev} />
 				</Box>

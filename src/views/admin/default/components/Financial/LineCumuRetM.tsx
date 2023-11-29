@@ -2308,8 +2308,7 @@ export default function LineCumuRetM({tick, name}: currentTick) {
               {tickerOptions}
               </Select>
             </Flex>
-				<Text fontSize='50px'>Cumulative Stock Returns (Monthly)</Text>
-				<Text fontSize='50px'>{'mReturns' + tick + value}</Text>
+				<Text fontSize='25px'><b>Monthly Cumulative Stock Returns (By Year)</b></Text>
 				<Box minH='260px' minW='75%' mt='auto'>
 					<LineChart chartData={mReturnsAAPL2006} chartOptions={lineChartOptionsMonthRev} />
 				</Box>

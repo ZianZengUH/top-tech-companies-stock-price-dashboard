@@ -1165,8 +1165,7 @@ export default function LineCumuRet({tick, name}: currentTick) {
               {tickerOptions}
               </Select>
             </Flex>
-			<Text fontSize='50px'>Candlestick (Open, High, Low, Close)</Text>
-			<Text fontSize='50px'>{'candlestick' + tick + value}</Text>
+			<Text fontSize='25px'><b>Candlestick Chart</b></Text>
 			<Box minH='260px' minW='75%' mt='auto'>
 			<CandlestickChart chartData={candlestickAAPL2006} chartOptions={SampleCandleOptions} />
 			</Box>

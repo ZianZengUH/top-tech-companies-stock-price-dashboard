@@ -130,8 +130,7 @@ export default function HistoStockReturn({tick, name}: currentTick) {
 
 	return (
 		<Card key={2} justifyContent='center' alignItems='center' flexDirection='column' w='100%' mb='0px'>
-				<Text fontSize='50px'>Frequency of Stock Returns</Text>
-				<Text fontSize='50px'>{chart}</Text>
+				<Text fontSize='22px'><b>Frequency of Stock Returns</b></Text>
 				<Box minH='260px' minW='75%' mt='auto'>
 					<BarChart chartData={histogramAAPL} chartOptions={barChartOptionsHisto} />
 				</Box>

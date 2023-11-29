@@ -22,6 +22,9 @@ export const barChartOptionsHisto: ApexGeneric = {
       show: false,
     },
   },
+  dataLabels: {
+    enabled: false
+  },
   tooltip: {
     style: {
       fontSize: "12px",
@@ -39,11 +42,6 @@ export const barChartOptionsHisto: ApexGeneric = {
     show: true,
     labels: {
       show: true,
-      style: {
-        colors: "#A3AED0",
-        fontSize: "14px",
-        fontWeight: "500",
-      },
     },
     axisBorder: {
       show: true,
@@ -51,38 +49,30 @@ export const barChartOptionsHisto: ApexGeneric = {
     axisTicks: {
       show: true,
     },
+    tickAmount: 13,
+    title: {
+      text: "Values (Between Value - 0.005)",
+      style: {
+        fontSize: '18px',
+      }
+    },
   },
   yaxis: {
     show: true,
     color: "black",
     labels: {
       show: true,
+    },
+    title: {
+      text: "Total Periods in Range",
       style: {
-        colors: "#CBD5E0",
-        fontSize: "14px",
-      },
+        fontSize: '15px',
+      }
     },
-  },
-  grid: {
-    show: true,
-    strokeDashArray: 5,
-    yaxis: {
-      lines: {
-        show: true,
-      },
-    },
-    xaxis: {
-      lines: {
-        show: true,
-      },
-    },
-  },
-  dataLabels: {
-    enabled: true,
   },
   plotOptions: {
     bar: {
-      columnWidth: "20px",
+      columnWidth: "12px",
     },
   },
 };
@@ -90,7 +80,7 @@ export const barChartOptionsHisto: ApexGeneric = {
 export const lineChartOptionsTotalSpent: ApexOptions = {
   chart: {
     toolbar: {
-      show: false,
+      show: true,
     },
   },
   // color: ["#7551FF", "#39B8FF"],
@@ -102,6 +92,22 @@ export const lineChartOptionsMonthRev: ApexOptions = {
       show: false,
     },
   },
+  xaxis: {
+    title: {
+      text: "Date",
+      style: {
+        fontSize: '18px',
+      }
+    },
+  },
+  yaxis: {
+    title: {
+      text: "Cumulative Returns",
+      style: {
+        fontSize: '18px',
+      }
+    },
+  },
   // color: ["#7551FF", "#39B8FF"],
 };
 
@@ -111,14 +117,81 @@ export const lineChartOptionsYearRev: ApexOptions = {
       show: false,
     },
   },
+  xaxis: {
+    title: {
+      text: "Date",
+      style: {
+        fontSize: '18px',
+      }
+    },
+  },
+  yaxis: {
+    title: {
+      text: "Cumulative Returns",
+      style: {
+        fontSize: '18px',
+      }
+    },
+  },
+  // color: ["#7551FF", "#39B8FF"],
+};
+
+export const lineChartOptionsAdjRev: ApexOptions = {
+  chart: {
+    toolbar: {
+      show: true,
+    },
+  },
+  xaxis: {
+    type: 'datetime',
+    title: {
+      text: "Date",
+      style: {
+        fontSize: '18px'
+      }
+    },
+    tickAmount: 13,
+    labels: {
+      format: 'MM/yyyy'
+    }
+  },
+  yaxis: {
+    title: {
+      text: "Adjusted Returns",
+      style: {
+        fontSize: '18px',
+      }
+    },
+  }
   // color: ["#7551FF", "#39B8FF"],
 };
 
 export const SampleCandleOptions: ApexOptions = {
-   chart: {
+  chart: {
     type: 'candlestick',
     toolbar: {
-      show: false,
+      show: true,
+    },
+  },
+  xaxis: {
+    type: 'datetime',
+    title: {
+      text: "Date",
+      style: {
+        fontSize: '18px',
+      }
+    },
+    tickAmount: 13,
+    labels: {
+      format: 'MM/yyyy'
+    },
+  },
+  yaxis: {
+    title: {
+      text: "Stock",
+      style: {
+        fontSize: '18px',
+      }
     },
   },
   // color: ["#7551FF", "#39B8FF"],

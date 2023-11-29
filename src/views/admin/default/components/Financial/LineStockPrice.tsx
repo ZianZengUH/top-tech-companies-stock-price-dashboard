@@ -1123,7 +1123,7 @@ import {
 	adjReturnsZS2019,
 	adjReturnsZS2020
   } from 'variables/financialCharts/adjClose';
-import { lineChartDataTotalSpent, lineChartOptionsTotalSpent, lineChartOptionsYearRev, lineChartOptionsMonthRev} from 'variables/financialcharts';
+import { lineChartOptionsAdjRev } from 'variables/financialcharts';
 import React from 'react';
 
 interface currentTick {
@@ -1162,10 +1162,9 @@ export default function LineStockPrice({tick, name}: currentTick) {
               {tickerOptions}
               </Select>
             </Flex>
-				<Text fontSize='50px'>Stock Price</Text>
-				<Text fontSize='50px'>{'adjReturns' + tick + value}</Text>
+				<Text fontSize='25px'><b>Daily Stock Price (By Year)</b></Text>
 				<Box minH='260px' minW='75%' mt='auto'>
-					<LineChart chartData={adjReturnsAAPL2006} chartOptions={lineChartOptionsYearRev} />
+					<LineChart chartData={adjReturnsAAPL2006} chartOptions={lineChartOptionsAdjRev} />
 				</Box>
 		</Card>
 	);

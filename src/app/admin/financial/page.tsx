@@ -208,20 +208,25 @@ export default function Default() {
       {/* <SimpleGrid columns={{ base: 1, md: 1, xl: 1 }} gap="20px" mb="20px">
         <LineCumuRet tick={value}/>
       </SimpleGrid> */}
-      <SimpleGrid columns={{ base: 1, md: 1, xl: 1 }} gap="20px" mb="20px">
-        <LineCumuRetM tick={value} name={tickName}/>
+      <SimpleGrid columns={{ base: 1, md: 1, xl: 2 }} gap="20px" mb="20px">
+        <Flex><LineCumuRetM tick={value} name={tickName}/></Flex>
+        <Flex><Text>This is placeholder text.</Text></Flex>
       </SimpleGrid>
-      <SimpleGrid columns={{ base: 1, md: 1, xl: 1 }} gap="20px" mb="20px">
-        <LineCumuRetY tick={value} name={tickName}/>
+      <SimpleGrid columns={{ base: 1, md: 1, xl: 2 }} gap="20px" mb="20px">
+        <Flex><LineCumuRetY tick={value} name={tickName}/></Flex>
+        <Flex><Text>This is placeholder text.</Text></Flex>
       </SimpleGrid>
-      <SimpleGrid columns={{ base: 1, md: 1, xl: 1 }} gap="20px" mb="20px">
-        <LineStockPrice tick={value} name={tickName}/>
+      <SimpleGrid columns={{ base: 1, md: 1, xl: 2 }} gap="20px" mb="20px">
+        <Flex><LineStockPrice tick={value} name={tickName}/></Flex>
+        <Flex><Text>This is placeholder text.</Text></Flex>
       </SimpleGrid>
-      <SimpleGrid columns={{ base: 1, md: 1, xl: 1 }} gap="20px" mb="20px">
-        <HistoStockReturn tick={value} name={tickName}/>
+      <SimpleGrid columns={{ base: 1, md: 1, xl: 2 }} gap="20px" mb="20px">
+        <Flex><HistoStockReturn tick={value} name={tickName}/></Flex>
+        <Flex><Text>This is placeholder text.</Text></Flex>
       </SimpleGrid>
-      <SimpleGrid columns={{ base: 1, md: 1, xl: 1 }} gap="20px" mb="20px">
-        <CandlestickChart tick={value} name={tickName}/>
+      <SimpleGrid columns={{ base: 1, md: 1, xl: 2 }} gap="20px" mb="20px">
+        <Flex><CandlestickChart tick={value} name={tickName}/></Flex>
+        <Flex><Text>This is placeholder text.</Text></Flex>
       </SimpleGrid>
     </Box>
   );

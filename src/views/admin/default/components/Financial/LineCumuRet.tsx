@@ -1148,8 +1148,7 @@ export default function LineCumuRet({tick, name}: currentTick) {
 
 	return (
 		<Card justifyContent='center' alignItems='center' flexDirection='column' w='100%' mb='0px'>
-				<Text fontSize='50px'>Cumulative Stock Returns (Daily)</Text>
-				<Text fontSize='50px'>{chart}</Text>
+				<Text fontSize='25px'><b>Cumulative Stock Returns (Daily)</b></Text>
 				<Box minH='260px' minW='75%' mt='auto'>
 					<LineChart chartData={dReturnsAAPL2006} chartOptions={lineChartOptionsYearRev} />
 				</Box>
