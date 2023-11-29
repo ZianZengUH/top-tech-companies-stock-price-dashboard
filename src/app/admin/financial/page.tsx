@@ -196,7 +196,7 @@ export default function Default() {
         </Flex>
         <Flex me="50px" mt="20px">
           
-          <Select variant='filled' bg='gray.200' placeholder='AAPL'
+          <Select variant='filled' bg='gray.200'
             value = {value}
             onChange={(e) => {setValue(e.target.value); setTickName(getName.at(0));}}
           >
