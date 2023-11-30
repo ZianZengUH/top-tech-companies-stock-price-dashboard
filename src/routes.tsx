@@ -69,6 +69,12 @@ const routes: IRoute[] = [
     path: '/financial',
     icon: <Icon as={MdBarChart} width="20px" height="20px" color="inherit" />,
   },
+  {
+    name: 'Comparative Charts',
+    layout: '/admin',
+    path: '/comparative',
+    icon: <Icon as={MdBarChart} width="20px" height="20px" color="inherit" />,
+  },
 ];
 
 export default routes;
