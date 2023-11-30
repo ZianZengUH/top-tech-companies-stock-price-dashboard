@@ -24,25 +24,11 @@
 import {
   Box,
   Flex,
-  FormLabel,
-  Image,
-  Icon,
   Select,
   SimpleGrid,
   Text,
-  useColorModeValue,
 } from '@chakra-ui/react';
 // Custom components
-// import MiniCalendar from 'components/calendar/MiniCalendar';
-import MiniStatistics from 'components/card/MiniStatistics';
-import IconBox from 'components/icons/IconBox';
-import {
-  MdAddTask,
-  MdAttachMoney,
-  MdBarChart,
-  MdFileCopy,
-} from 'react-icons/md';
-import LineCumuRet from 'views/admin/default/components/Financial/LineCumuRet';
 import LineCumuRetM from 'views/admin/default/components/Financial/LineCumuRetM';
 import LineCumuRetY from 'views/admin/default/components/Financial/LineCumuRetY';
 import LineStockPrice from 'views/admin/default/components/Financial/LineStockPrice';
@@ -52,16 +38,13 @@ import React from 'react';
 
 
 // Assets
-import Usa from 'img/dashboards/usa.png';
 
 export default function Default() {
   // Chakra Color Mode
   const[value, setValue] = React.useState('AAPL');
   const[tickName, setTickName] = React.useState('Apple Inc.')
-  const brandColor = useColorModeValue('brand.500', 'white');
-  const boxBg = useColorModeValue('secondaryGray.300', 'whiteAlpha.100');
   const tickers = ["AAPL","ACN","ADBE","ADI","ADSK","AKAM","AMAT","AMD","ANET","ANSS","APH","ASML","AVGO","AVLR","BR","CAJ","CCC","CDNS",
-  "CDW","CHKP","COUP","CRM","CRWD","CSCO","CTSH","CTXS","DDOG","DELL","DOCU","EPAM","ERIC","FIS","FISV","FLT","FTNT","FTV","FTVPA",
+  "CDW","CHKP","COUP","CRM","CRWD","CSCO","CTSH","CTXS","DDOG","DELL","DOCU","EPAM","ERIC","FIS","FISV","FLT","FTNT","FTV","FTV-PA",
   "GIB","GLW","GRMN","HPQ","HUBS","IBM","INFY","INTC","INTU","KEYS","KLAC","LRCX","MCHP","MRVL","MSFT","MSI","MU","MXIM","NET","NOW",
   "NVDA","NXPI","OKTA","ORCL","PANW","PAYC","PLTR","QCOM","QRVO","RNG","SAP","SHOP","SNE","SNPS","SPLK","SQ","SSNC","STM","STX","SWKS",
   "TEAM","TEL","TER","TRMB","TSM","TXN","TYL","U","UBER","UI","UMC","VMW","VRSN","WDAY","WIT","WORK","XLNX","ZBRA","ZEN","ZI","ZS"];
@@ -205,9 +188,7 @@ export default function Default() {
         </Flex>
       </SimpleGrid>
 
-      {/* <SimpleGrid columns={{ base: 1, md: 1, xl: 1 }} gap="20px" mb="20px">
-        <LineCumuRet tick={value}/>
-      </SimpleGrid> */}
+
       <SimpleGrid columns={{ base: 1, md: 1, xl: 2 }} gap="20px" mb="20px">
         <Flex><LineCumuRetM tick={value} name={tickName}/></Flex>
         <Flex><Text>This is placeholder text.</Text></Flex>

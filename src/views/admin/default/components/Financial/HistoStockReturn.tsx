@@ -1,132 +1,49 @@
 // Chakra imports
-import { Box, Button, Flex, Icon, Text, useColorModeValue } from '@chakra-ui/react';
+import { Box,Text } from '@chakra-ui/react';
 // Custom components
 import Card from 'components/card/Card';
 import BarChart from 'components/charts/BarChart';
 import { useEffect, useState } from 'react';
 // Assets
-import { 
-	histogramAAPL,
-	histogramACN,
-	histogramADBE,
-	histogramADI,
-	histogramADSK,
-	histogramAKAM,
-	histogramAMAT,
-	histogramAMD,
-	histogramANET,
-	histogramANSS,
-	histogramAPH,
-	histogramASML,
-	histogramAVGO,
-	histogramAVLR,
-	histogramBR,
-	histogramCAJ,
-	histogramCCC,
-	histogramCDNS,
-	histogramCDW,
-	histogramCHKP,
-	histogramCOUP,
-	histogramCRM,
-	histogramCRWD,
-	histogramCSCO,
-	histogramCTSH,
-	histogramCTXS,
-	histogramDDOG,
-	histogramDELL,
-	histogramDOCU,
-	histogramEPAM,
-	histogramERIC,
-	histogramFIS,
-	histogramFISV,
-	histogramFLT,
-	histogramFTNT,
-	histogramFTV,
-	histogramFTVPA,
-	histogramGIB,
-	histogramGLW,
-	histogramGRMN,
-	histogramHPQ,
-	histogramHUBS,
-	histogramIBM,
-	histogramINFY,
-	histogramINTC,
-	histogramINTU,
-	histogramKEYS,
-	histogramKLAC,
-	histogramLRCX,
-	histogramMCHP,
-	histogramMRVL,
-	histogramMSFT,
-	histogramMSI,
-	histogramMU,
-	histogramMXIM,
-	histogramNET,
-	histogramNOW,
-	histogramNVDA,
-	histogramNXPI,
-	histogramOKTA,
-	histogramORCL,
-	histogramPANW,
-	histogramPAYC,
-	histogramPLTR,
-	histogramQCOM,
-	histogramQRVO,
-	histogramRNG,
-	histogramSAP,
-	histogramSHOP,
-	histogramSNE,
-	histogramSNPS,
-	histogramSPLK,
-	histogramSQ,
-	histogramSSNC,
-	histogramSTM,
-	histogramSTX,
-	histogramSWKS,
-	histogramTEAM,
-	histogramTEL,
-	histogramTER,
-	histogramTRMB,
-	histogramTSM,
-	histogramTXN,
-	histogramTYL,
-	histogramU,
-	histogramUBER,
-	histogramUI,
-	histogramUMC,
-	histogramVMW,
-	histogramVRSN,
-	histogramWDAY,
-	histogramWIT,
-	histogramWORK,
-	histogramXLNX,
-	histogramZBRA,
-	histogramZEN,
-	histogramZI,
-	histogramZS
-  } from 'variables/financialCharts/histReturns';
 import { barChartOptionsHisto } from 'variables/financialcharts';
+import { histogramAAPL } from 'variables/financialCharts/histReturns';
+import React from 'react';
+import Papa from 'papaparse';
 
 interface currentTick {
 	tick: string;
 	name: String;
 }
+
+interface file {
+	x: Number, y: Number
+}
+
 export default function HistoStockReturn({tick, name}: currentTick) {
-
-
 	// Chakra Color Mode
+	const [info, setInfo] = useState<file[]>([]);
+	useEffect(() => {
+		async function fetchData() {
+			let response = await fetch('/data/top_tech_company/Financial/Histo/histogram' + tick + '.csv')
+			let csvString = await response.text();
+			Papa.parse<file>(csvString, {
+				header: true,
+				skipEmptyLines: true,
+				dynamicTyping: true,
+				complete: (results) => {
+					setInfo(
+						results.data
+					);
+				}
+			});
+		}
+		fetchData();
+	});
 
-	const textColor = useColorModeValue('secondaryGray.900', 'white');
-	const textColorSecondary = useColorModeValue('secondaryGray.600', 'white');
-	const boxBg = useColorModeValue('secondaryGray.300', 'whiteAlpha.100');
-	const iconColor = useColorModeValue('brand.500', 'white');
-	const bgButton = useColorModeValue('secondaryGray.300', 'whiteAlpha.100');
-	const bgHover = useColorModeValue({ bg: 'secondaryGray.400' }, { bg: 'whiteAlpha.50' });
-	const bgFocus = useColorModeValue({ bg: 'secondaryGray.300' }, { bg: 'whiteAlpha.100' });
-
-	const [ mounted, setMounted ] = useState(false);
-
-	const chart : string = 'histogram' + tick;
+	const newData = [{
+		name: 'Values',
+		data: info
+	}]
 
 	return (
 		<Card key={2} justifyContent='center' alignItems='center' flexDirection='column' w='100%' mb='0px'>
