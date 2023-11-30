@@ -55,8 +55,7 @@ const StockStandardDeviationChart: React.FC = () => {
 
   useEffect(() => {
     const fetchStockData = async (symbol: string): Promise<StockData[]> => {
-      // Replace this fetch call with the appropriate URL or backend service call
-      const response = await fetch(`/data/stocks/${symbol}.csv`);
+      const response = await fetch(`/data/top_tech_company/Technology Companies/${symbol}.csv`);
       const text = await response.text();
       return new Promise<StockData[]>((resolve, reject) => {
         Papa.parse<StockData>(text, {
@@ -73,10 +72,35 @@ const StockStandardDeviationChart: React.FC = () => {
     };
 
     const calculateStandardDeviation = (values: number[]) => {
-      const mean = values.reduce((acc, val) => acc + val, 0) / values.length;
-      const variance = values.reduce((acc, val) => acc + (val - mean) ** 2, 0) / values.length;
-      return Math.sqrt(variance);
+      // Filter out non-numeric or invalid values
+      const validValues = values.filter(value => isFinite(value));
+    
+      if (validValues.length === 0) {
+        console.warn('No valid values provided for standard deviation calculation.');
+        return NaN;
+      }
+    
+      const mean = validValues.reduce((acc, val) => acc + val, 0) / validValues.length;
+      if (!isFinite(mean)) {
+        console.warn('Mean is not finite, check your valid values:', validValues);
+        return NaN;
+      }
+    
+      const variance = validValues.reduce((acc, val) => acc + (val - mean) ** 2, 0) / validValues.length;
+      if (!isFinite(variance)) {
+        console.warn('Variance is not finite, check your valid values:', validValues);
+        return NaN;
+      }
+    
+      const standardDeviation = Math.sqrt(variance);
+      if (!isFinite(standardDeviation)) {
+        console.warn('Standard deviation is not finite, check your valid values:', validValues);
+        return NaN;
+      }
+    
+      return standardDeviation;
     };
+    
 
     const processAllStocks = async () => {
       const promises = techCompanies.map(async (symbol) => {
@@ -93,6 +117,8 @@ const StockStandardDeviationChart: React.FC = () => {
 
       const results = await Promise.all(promises);
       const sortedResults = results.sort((a, b) => b.standardDeviation - a.standardDeviation).slice(0, 50);
+
+      // console.log("Sorted Results:", sortedResults); // Log the sorted results
 
       setStandardDeviations(sortedResults);
       setChartOptions(prevOptions => ({

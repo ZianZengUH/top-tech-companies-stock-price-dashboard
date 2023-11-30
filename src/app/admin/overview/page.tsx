@@ -6,6 +6,7 @@ import PeRatioBarChart from 'views/admin/dataTables/components/PeRatioBarChart';
 import YearlyReturnsChart from 'views/admin/dataTables/components/YearlyReturnsChart';
 import StockStandardDeviationChart from 'views/admin/dataTables/components/StockStandardDeviationChart';
 import YearlyStockStandardDeviationChart from 'views/admin/dataTables/components/YearlyStockStandardDeviationChart';
+import MostVolatileStocksChart from 'views/admin/dataTables/components/MostVolatileStocksChart';
 
 import CheckTable from 'views/admin/dataTables/components/CheckTable';
 import ColumnsTable from 'views/admin/dataTables/components/ColumnsTable';
@@ -55,9 +56,8 @@ interface PeRatioData {
   value: number;
 }
 
-export default function ExploratoryDataCharts() {
-  // const [searchKeyword, setSearchKeyword] = useState('');
-  // const [selectedComponent, setSelectedComponent] = useState(null);
+
+export default function OverviewCharts() {
 
   /*
    Sector Percentages Table
@@ -220,9 +220,10 @@ export default function ExploratoryDataCharts() {
         {BarChartVisible && <YearlyReturnsChart isBest={false} />}
 
         {/* Daily Stock Standard Deviation Chart */}
+
         {BarChartVisible && <StockStandardDeviationChart />}
         {BarChartVisible && <YearlyStockStandardDeviationChart />}
-        {/* {selectedComponent} */}
+        <MostVolatileStocksChart />
 
       </SimpleGrid>
     </Box>
