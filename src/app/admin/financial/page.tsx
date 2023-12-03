@@ -191,23 +191,55 @@ export default function Default() {
 
       <SimpleGrid columns={{ base: 1, md: 1, xl: 2 }} gap="20px" mb="20px">
         <Flex><LineCumuRetM tick={value} name={tickName}/></Flex>
-        <Flex><Text>This is placeholder text.</Text></Flex>
+        <Flex><Text><ul>
+          <li><b>Cumulative Returns as a line chart condensed by month.</b></li>
+          <li>Total change in the investment price over time (Not annually) </li>
+          <li>In Short: <b>The more it goes up over time, the better it is doing.</b></li>
+          <li>Generally will continuously rise over time.</li>
+          <li>This means it is not a great comparison for graphs with different starting times.</li>
+          </ul></Text></Flex>
       </SimpleGrid>
       <SimpleGrid columns={{ base: 1, md: 1, xl: 2 }} gap="20px" mb="20px">
         <Flex><LineCumuRetY tick={value} name={tickName}/></Flex>
-        <Flex><Text>This is placeholder text.</Text></Flex>
+        <Flex><Text><ul>
+          <li><b>Cumulative Returns as a line chart condensed by year.</b></li>
+          <li>Total change in the investment price over time. (Not annually) </li>
+          <li>In Short: <b>The more it goes up over time, the better it is doing.</b></li>
+          <li>Generally will continuously rise over time.</li>
+          <li>This means it is not a great comparison for graphs with different starting times.</li>
+          </ul></Text></Flex>
       </SimpleGrid>
       <SimpleGrid columns={{ base: 1, md: 1, xl: 2 }} gap="20px" mb="20px">
         <Flex><LineStockPrice tick={value} name={tickName}/></Flex>
-        <Flex><Text>This is placeholder text.</Text></Flex>
+        <Flex><Text><ul>
+          <li><b>Adjusted Returns as a line chart by day. </b></li>
+          <li>Takes into account the risk taken by a company to earn those returns and adjusts their returns accordingly. </li>
+          <li>In Short: <b>The higher it is, the more their "value" is both stable and good. </b></li>
+          </ul></Text></Flex>
       </SimpleGrid>
       <SimpleGrid columns={{ base: 1, md: 1, xl: 2 }} gap="20px" mb="20px">
         <Flex><HistoStockReturn tick={value} name={tickName}/></Flex>
-        <Flex><Text>This is placeholder text.</Text></Flex>
+        <Flex><Text><ul>
+          <li><b>Frequency of stock return values from 2006 and 2020.</b></li>
+          <li>Shows how frequently different value ranges (0.005 differences) appear.</li>
+          <li>In Short: <b>If more peaks appear towards the right (Positive values) then they see positive values more frequently.</b></li>
+          <li>Caution that these totals of numbers are not necessarily appearing back-to-back. </li>
+          <li>For example: Three of the 0 - 0.005 range values may be from completely different months or years. </li>
+          </ul></Text></Flex>
       </SimpleGrid>
       <SimpleGrid columns={{ base: 1, md: 1, xl: 2 }} gap="20px" mb="20px">
         <Flex><CandlestickChart tick={value} name={tickName}/></Flex>
-        <Flex><Text>This is placeholder text.</Text></Flex>
+        <Flex><Text><ul>
+          <li><b>Candlestick chart representing Open High Low and Close. </b></li>
+          <li>Shows the Highest and Lowest prices during a day. </li>
+          <li>Also shows the Opening value and the Closing value for a day. </li>
+          <li>A filled in space (Green or Red) represents the range between open and close. </li>
+          <li>A thin line represents the distance between open/close and the highest/lowest points. </li>
+          <li>Green means the close ended higher than the open. Red means close ended lower than open. </li>
+          <li>In Short: <b>Green bars mean prices went higher by the end of the day, Red bars mean prices went lower by the end of the day.</b></li>
+          <li>Caution that these totals require more understanding of candlestick trends to accurately predict price changes. </li>
+          <li>Caution that there is no guaranteed way to use these charts with 100% certainty on future predictions. </li>
+          </ul></Text></Flex>
       </SimpleGrid>
     </Box>
   );
