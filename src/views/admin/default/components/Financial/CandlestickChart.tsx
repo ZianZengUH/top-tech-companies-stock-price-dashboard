@@ -6,7 +6,6 @@ import CandlestickChart from 'components/charts/FinanceCandlestickChart'
 import { useMemo, useEffect, useState } from 'react';
 // Assets
 import { SampleCandleOptions } from 'variables/financialcharts';
-import { candlestickAAPL2006 } from 'variables/financialCharts/ohlc';
 import Papa from 'papaparse';
 
 interface currentTick {

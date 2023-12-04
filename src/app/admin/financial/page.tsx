@@ -45,7 +45,7 @@ export default function Default() {
   const[tickName, setTickName] = React.useState('Apple Inc.');
   const[cutoff, setCutoff] = React.useState(0);
   const tickers = ["AAPL","ACN","ADBE","ADI","ADSK","AKAM","AMAT","AMD","ANET","ANSS","APH","ASML","AVGO","AVLR","BR","CAJ","CCC","CDNS",
-  "CDW","CHKP","COUP","CRM","CRWD","CSCO","CTSH","CTXS","DDOG","DELL","DOCU","EPAM","ERIC","FIS","FISV","FLT","FTNT","FTV","FTVPA",
+  "CDW","CHKP","COUP","CRM","CRWD","CSCO","CTSH","CTXS","DDOG","DELL","DOCU","EPAM","ERIC","FIS","FISV","FLT","FTNT","FTV","FTV-PA",
   "GIB","GLW","GRMN","HPQ","HUBS","IBM","INFY","INTC","INTU","KEYS","KLAC","LRCX","MCHP","MRVL","MSFT","MSI","MU","MXIM","NET","NOW",
   "NVDA","NXPI","OKTA","ORCL","PANW","PAYC","PLTR","QCOM","QRVO","RNG","SAP","SHOP","SNE","SNPS","SPLK","SQ","SSNC","STM","STX","SWKS",
   "TEAM","TEL","TER","TRMB","TSM","TXN","TYL","U","UBER","UI","UMC","VMW","VRSN","WDAY","WIT","WORK","XLNX","ZBRA","ZEN","ZI","ZS"];
@@ -86,7 +86,7 @@ export default function Default() {
     'FLEETCOR Technologies Inc.',
     'Fortinet Inc.',
     'Fortive Corporation',
-    'Fortive Corporation',
+    'Fortive Corporation (Partners)',
     'CGI Inc.',
     'Corning Incorporated',
     'Garmin Ltd.',
@@ -550,7 +550,7 @@ export default function Default() {
       let option = <option key={i} value={ticker}>{names.at(i)}</option>;
       return option
     }
-	)
+  )
 
   const getName = tickers.map((ticker, i) =>
     {
@@ -584,7 +584,7 @@ export default function Default() {
           
           <Select variant='filled' bg='gray.200'
             value = {value}
-            onChange={(e) => {setValue(e.target.value); setTickName(getName.at(0)); setCutoff(isCherries(e.target.value))}}
+            onChange={(e) => {setValue(e.target.value); setTickName(getName.at(0)); setCutoff(isCherries(e.target.value));}}
           >
           {tickerOptions}
           </Select>

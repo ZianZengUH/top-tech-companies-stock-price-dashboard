@@ -19,7 +19,7 @@ interface file {
 
 export default function HistoStockReturn({tick, name}: currentTick) {
 	// Chakra Color Mode
-	const [info, setInfo] = useState([]);
+	const [info, setInfo] = useState<file[]>([]);
 	useEffect(() => {
 		async function fetchData() {
 			let response = await fetch('/data/top_tech_company/Financial/Histo/histogram' + tick + '.csv')

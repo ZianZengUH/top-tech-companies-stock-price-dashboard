@@ -3,29 +3,37 @@ import {Box,Flex,Select,Text} from '@chakra-ui/react';
 // Custom components
 import Card from 'components/card/Card';
 import LineChart from 'components/charts/LineChart';
-import { useEffect, useState } from 'react';
+import { useMemo, useEffect, useState } from 'react';
 // Assets
 import { lineChartOptionsMonthRev} from 'variables/financialcharts';
-import React from 'react';
 import Papa from 'papaparse';
 
 interface currentTick {
 	tick: string;
 	name: string;
+	cutoff: number;
 }
 
 interface file {
 	x: Date, y: Number
 }
 
-export default function LineCumuRetM({tick, name}: currentTick) {
-	// Chakra Color Mode
-	const years = ['2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020'];
-	const [value, setValue] = React.useState('2006');
+export default function LineCumuRetM({tick, name, cutoff}: currentTick) {
 
-	const tickerOptions = years.map((data, i) => 
+	
+	const years = ['2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020'];
+	const [value, setValue] = useState(years.slice(cutoff).at(0));
+
+	const tickerOptions = useMemo(() => years.slice(cutoff).map((data, i) => 
 		<option key={i} value={data}>{data}</option>
-	)
+	), [tick]);
+
+	useEffect(() => {
+		async function fetchData() {
+			setValue(years.slice(cutoff).at(0))
+		}
+		fetchData();
+	}, [tick]);
 
 	const [info, setInfo] = useState<file[]>([]);
 	useEffect(() => {

@@ -29,6 +29,8 @@ export default function Default() {
   const[tickName, setTickName] = React.useState('Apple Inc.')
   const[value2, setValue2] = React.useState('AAPL');
   const[tickName2, setTickName2] = React.useState('Apple Inc.')
+  const[cutoff, setCutoff] = React.useState(0);
+  const[cutoff2, setCutoff2] = React.useState(0);
 
   const tickers = ["AAPL","ACN","ADBE","ADI","ADSK","AKAM","AMAT","AMD","ANET","ANSS","APH","ASML","AVGO","AVLR","BR","CAJ","CCC","CDNS",
   "CDW","CHKP","COUP","CRM","CRWD","CSCO","CTSH","CTXS","DDOG","DELL","DOCU","EPAM","ERIC","FIS","FISV","FLT","FTNT","FTV","FTV-PA",
@@ -73,7 +75,7 @@ export default function Default() {
     'FLEETCOR Technologies Inc.',
     'Fortinet Inc.',
     'Fortive Corporation',
-    'Fortive Corporation',
+    'Fortive Corporation (Partners)',
     'CGI Inc.',
     'Corning Incorporated',
     'Garmin Ltd.',
@@ -136,6 +138,408 @@ export default function Default() {
     'ZoomInfo Technologies Inc.',
     'Zscaler Inc.',
   ];
+  const cutoffs = [
+		{
+		  name: 'AAPL',
+		  value: 0
+		},
+		{
+		  name: 'ACN',
+		  value: 0
+		},
+		{
+		  name: 'ADBE',
+		  value: 0
+		},
+		{
+		  name: 'ADI',
+		  value: 0
+		},
+		{
+		  name: 'ADSK',
+		  value: 0
+		},
+		{
+		  name: 'AKAM',
+		  value: 0
+		},
+		{
+		  name: 'AMAT',
+		  value: 0
+		},
+		{
+		  name: 'AMD',
+		  value: 0
+		},
+		{
+		  name: 'ANET',
+		  value: 8
+		},
+		{
+		  name: 'ANSS',
+		  value: 0
+		},
+		{
+		  name: 'APH',
+		  value: 0
+		},
+		{
+		  name: 'ASML',
+		  value: 0
+		},
+		{
+		  name: 'AVGO',
+		  value: 3
+		},
+		{
+		  name: 'AVLR',
+		  value: 12
+		},
+		{
+		  name: 'BR',
+		  value: 1
+		},
+		{
+		  name: 'CAJ',
+		  value: 0
+		},
+		{
+		  name: 'CCC',
+		  value: 12
+		},
+		{
+		  name: 'CDNS',
+		  value: 0
+		},
+		{
+		  name: 'CDW',
+		  value: 7
+		},
+		{
+		  name: 'CHKP',
+		  value: 0
+		},
+		{
+		  name: 'COUP',
+		  value: 10
+		},
+		{
+		  name: 'CRM',
+		  value: 0
+		},
+		{
+		  name: 'CRWD',
+		  value: 13
+		},
+		{
+		  name: 'CSCO',
+		  value: 0
+		},
+		{
+		  name: 'CTSH',
+		  value: 0
+		},
+		{
+		  name: 'CTXS',
+		  value: 0
+		},
+		{
+		  name: 'DDOG',
+		  value: 13
+		},
+		{
+		  name: 'DELL',
+		  value: 10
+		},
+		{
+		  name: 'DOCU',
+		  value: 12
+		},
+		{
+		  name: 'EPAM',
+		  value: 6
+		},
+		{
+		  name: 'ERIC',
+		  value: 0
+		},
+		{
+		  name: 'FIS',
+		  value: 0
+		},
+		{
+		  name: 'FISV',
+		  value: 0
+		},
+		{
+		  name: 'FLT',
+		  value: 5
+		},
+		{
+		  name: 'FTNT',
+		  value: 3
+		},
+		{
+		  name: 'FTV',
+		  value: 10
+		},
+		{
+		  name: 'FTV-PA',
+		  value: 12
+		},
+		{
+		  name: 'GIB',
+		  value: 0
+		},
+		{
+		  name: 'GLW',
+		  value: 0
+		},
+		{
+		  name: 'GRMN',
+		  value: 0
+		},
+		{
+		  name: 'HPQ',
+		  value: 0
+		},
+		{
+		  name: 'HUBS',
+		  value: 8
+		},
+		{
+		  name: 'IBM',
+		  value: 0
+		},
+		{
+		  name: 'INFY',
+		  value: 0
+		},
+		{
+		  name: 'INTC',
+		  value: 0
+		},
+		{
+		  name: 'INTU',
+		  value: 0
+		},
+		{
+		  name: 'KEYS',
+		  value: 8
+		},
+		{
+		  name: 'KLAC',
+		  value: 0
+		},
+		{
+		  name: 'LRCX',
+		  value: 0
+		},
+		{
+		  name: 'MCHP',
+		  value: 0
+		},
+		{
+		  name: 'MRVL',
+		  value: 0
+		},
+		{
+		  name: 'MSFT',
+		  value: 0
+		},
+		{
+		  name: 'MSI',
+		  value: 0
+		},
+		{
+		  name: 'MU',
+		  value: 0
+		},
+		{
+		  name: 'MXIM',
+		  value: 0
+		},
+		{
+		  name: 'NET',
+		  value: 13
+		},
+		{
+		  name: 'NOW',
+		  value: 6
+		},
+		{
+		  name: 'NVDA',
+		  value: 0
+		},
+		{
+		  name: 'NXPI',
+		  value: 4
+		},
+		{
+		  name: 'OKTA',
+		  value: 11
+		},
+		{
+		  name: 'ORCL',
+		  value: 0
+		},
+		{
+		  name: 'PANW',
+		  value: 6
+		},
+		{
+		  name: 'PAYC',
+		  value: 8
+		},
+		{
+		  name: 'PLTR',
+		  value: 14
+		},
+		{
+		  name: 'QCOM',
+		  value: 0
+		},
+		{
+		  name: 'QRVO',
+		  value: 9
+		},
+		{
+		  name: 'RNG',
+		  value: 7
+		},
+		{
+		  name: 'SAP',
+		  value: 0
+		},
+		{
+		  name: 'SHOP',
+		  value: 9
+		},
+		{
+		  name: 'SNE',
+		  value: 0
+		},
+		{
+		  name: 'SNPS',
+		  value: 0
+		},
+		{
+		  name: 'SPLK',
+		  value: 6
+		},
+		{
+		  name: 'SQ',
+		  value: 9
+		},
+		{
+		  name: 'SSNC',
+		  value: 4
+		},
+		{
+		  name: 'STM',
+		  value: 0
+		},
+		{
+		  name: 'STX',
+		  value: 0
+		},
+		{
+		  name: 'SWKS',
+		  value: 0
+		},
+		{
+		  name: 'TEAM',
+		  value: 10
+		},
+		{
+		  name: 'TEL',
+		  value: 1
+		},
+		{
+		  name: 'TER',
+		  value: 0
+		},
+		{
+		  name: 'TRMB',
+		  value: 0
+		},
+		{
+		  name: 'TSM',
+		  value: 0
+		},
+		{
+		  name: 'TXN',
+		  value: 0
+		},
+		{
+		  name: 'TYL',
+		  value: 0
+		},
+		{
+		  name: 'U',
+		  value: 14
+		},
+		{
+		  name: 'UBER',
+		  value: 13
+		},
+		{
+		  name: 'UI',
+		  value: 5
+		},
+		{
+		  name: 'UMC',
+		  value: 0
+		},
+		{
+		  name: 'VMW',
+		  value: 1
+		},
+		{
+		  name: 'VRSN',
+		  value: 0
+		},
+		{
+		  name: 'WDAY',
+		  value: 6
+		},
+		{
+		  name: 'WIT',
+		  value: 0
+		},
+		{
+		  name: 'WORK',
+		  value: 13
+		},
+		{
+		  name: 'XLNX',
+		  value: 0
+		},
+		{
+		  name: 'ZBRA',
+		  value: 0
+		},
+		{
+		  name: 'ZEN',
+		  value: 8
+		},
+		{
+		  name: 'ZI',
+		  value: 14
+		},
+		{
+		  name: 'ZS',
+		  value: 12
+		},
+	  ];
+
+  function isCherries(ticker:string) {
+    for(let i = 0; i < cutoffs.length; i ++) {
+        if(cutoffs.at(i).name == ticker) {
+        return cutoffs.at(i).value;
+        }
+    }
+  }
 
   const [chartType1, setChartType1] = React.useState('Monthly Cumulative Stock Returns (By Year)');
   const [chartType2, setChartType2] = React.useState('Monthly Cumulative Stock Returns (By Year)');
@@ -157,15 +561,15 @@ const handleSecondChartTypeChange = (chartOption: React.SetStateAction<string>) 
 const renderChart1 = () => {
   switch (chartType1) {
     case chartOptions[0]:
-      return <LineCumuRetM tick={value} name={tickName}/>;
+      return <LineCumuRetM tick={value} name={tickName} cutoff={cutoff} />;
     case chartOptions[1]:
       return <LineCumuRetY tick={value} name={tickName} />;
     case chartOptions[2]:
-      return <LineStockPrice tick={value} name={tickName} />;
+      return <LineStockPrice tick={value} name={tickName} cutoff={cutoff} />;
     case chartOptions[3]:
       return <HistoStockReturn tick={value} name={tickName} />;
     case chartOptions[4]:
-      return <CandlestickChart tick={value} name={tickName} />;
+      return <CandlestickChart tick={value} name={tickName} cutoff={cutoff} />;
     default:
       return null; 
   }
@@ -173,15 +577,15 @@ const renderChart1 = () => {
 const renderChart2 = () => {
   switch (chartType2) {
     case chartOptions[0]:
-      return <LineCumuRetM tick={value2} name={tickName2} />;
+      return <LineCumuRetM tick={value2} name={tickName2} cutoff={cutoff2} />;
     case chartOptions[1]:
       return <LineCumuRetY tick={value2} name={tickName2} />;
     case chartOptions[2]:
-      return <LineStockPrice tick={value2} name={tickName} />;
+      return <LineStockPrice tick={value2} name={tickName} cutoff={cutoff2} />;
     case chartOptions[3]:
       return <HistoStockReturn tick={value2} name={tickName2} />;
     case chartOptions[4]:
-      return <CandlestickChart tick={value2} name={tickName2} />;
+      return <CandlestickChart tick={value2} name={tickName2} cutoff={cutoff2} />;
     default:
       return null; 
   }
@@ -217,7 +621,7 @@ const renderChart2 = () => {
             </MenuButton>
             <MenuList>
               {tickers.map((ticker, i) => (
-                <MenuItem key={i} onClick={() => { setValue(ticker); setTickName(names[i]); }}>
+                <MenuItem key={i} onClick={() => { setValue(ticker); setTickName(names[i]); setCutoff(isCherries(ticker));}}>
                   {names[i]}
                 </MenuItem>
               ))}
@@ -243,7 +647,7 @@ const renderChart2 = () => {
             </MenuButton>
             <MenuList>
               {tickers.map((ticker, i) => (
-                <MenuItem key={i} onClick={() => { setValue2(ticker); setTickName2(names[i]); }}>
+                <MenuItem key={i} onClick={() => { setValue2(ticker); setTickName2(names[i]); setCutoff2(isCherries(ticker));}}>
                   {names[i]}
                 </MenuItem>
               ))}
