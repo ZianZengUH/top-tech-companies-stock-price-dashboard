@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactApexChart from 'react-apexcharts';
-import { Box, useColorModeValue, Text, Flex } from '@chakra-ui/react';
+import { Box, useColorModeValue, Text, Flex, Tooltip } from '@chakra-ui/react';
 import Papa from 'papaparse';
 import { ApexOptions } from 'apexcharts';
 
@@ -142,9 +142,11 @@ const StockStandardDeviationChart: React.FC = () => {
   return (
     <Box bg={cardBg} p="4" borderRadius="lg" shadow="base" width="100%">
       <Flex px='25px' mb="8px" justifyContent='space-between' align='center'>
-        <Text color={textColor} fontSize='22px' fontWeight='700' lineHeight='100%'>
-          Daily Stocks Standard Deviation
-        </Text>
+        <Tooltip label="This chart shows the daily standard deviation of stock prices for the top 20 tech companies. The standard deviation is a measure of the amount of variation or dispersion of a set of values, indicating the volatility of stock prices." hasArrow>
+          <Text color={textColor} fontSize='22px' fontWeight='700' lineHeight='100%' cursor="help">
+            Daily Stocks Standard Deviation
+          </Text>
+        </Tooltip>
       </Flex>
       <ReactApexChart options={chartOptions} series={series} type="bar" />
     </Box>

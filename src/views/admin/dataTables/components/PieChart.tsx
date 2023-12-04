@@ -1,6 +1,6 @@
 import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
-import { Box, Text, useColorModeValue, Flex } from '@chakra-ui/react';
+import { Box, Text, useColorModeValue, Flex,Tooltip } from '@chakra-ui/react';
 import Menu from 'components/menu/MainMenu';
 
 interface MarketCapDataItem {
@@ -104,9 +104,11 @@ const PieChart: React.FC<PieChartProps> = ({ data }) => {
     
     <Box className="card-container" bg={cardBg}>
       <Flex px='25px' mb="8px" justifyContent='space-between' align='center' mt="25px">
-        <Text color={textColor} fontSize='22px' fontWeight='700' lineHeight='100%'>
-          Market Capitalization in Billions per Company of Top 50 Tech Stocks
-        </Text>
+        <Tooltip label="This chart displays the market capitalization in billions for the top 50 tech stocks. Hover over the segments for more details." hasArrow>
+          <Text color={textColor} fontSize='22px' fontWeight='700' lineHeight='100%' cursor="help">
+            Market Capitalization in Billions per Company of Top 50 Tech Stocks
+          </Text>
+        </Tooltip>
 			</Flex>
       <ReactApexChart options={options} series={series} type="pie" />
     </Box>

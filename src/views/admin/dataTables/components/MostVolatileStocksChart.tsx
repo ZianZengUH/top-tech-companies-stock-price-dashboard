@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactApexChart from 'react-apexcharts';
-import { Box, useColorModeValue, Text, Flex } from '@chakra-ui/react';
+import { Box, useColorModeValue, Text, Flex, Tooltip } from '@chakra-ui/react';
 import Papa from 'papaparse';
 import { ApexOptions } from 'apexcharts';
 
@@ -119,9 +119,11 @@ const MostVolatileStocksChart: React.FC = () => {
   return (
     <Box bg={useColorModeValue('white', 'gray.700')} p="4" borderRadius="lg" shadow="base" width="100%">
       <Flex px='25px' mb="8px" justifyContent='space-between' align='center'>
-        <Text fontSize='22px' fontWeight='700' lineHeight='100%' color={useColorModeValue('secondaryGray.900', 'white')}>
-          Most Volatile Stocks 2020
-        </Text>
+      <Tooltip label="This chart displays the volatility of the top 20 tech stocks in 2020. Volatility is measured as the standard deviation of daily returns throughout the year." hasArrow>
+          <Text fontSize='22px' fontWeight='700' lineHeight='100%' color={useColorModeValue('secondaryGray.900', 'white')} cursor="help">
+            Most Volatile Stocks 2020
+          </Text>
+        </Tooltip>
       </Flex>
       <ReactApexChart
         options={chartOptions}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactApexChart from 'react-apexcharts';
-import { Box, useColorModeValue, Text, Flex } from '@chakra-ui/react';
+import { Box, useColorModeValue, Text, Flex, Tooltip } from '@chakra-ui/react';
 import Papa from 'papaparse';
 import { ApexOptions } from 'apexcharts';
 
@@ -112,9 +112,11 @@ const YearlyStockStandardDeviationChart: React.FC = () => {
   return (
     <Box bg={useColorModeValue('white', 'gray.700')} p="4" borderRadius="lg" shadow="base" width="100%">
       <Flex px='25px' mb="8px" justifyContent='space-between' align='center'>
-        <Text fontSize='22px' fontWeight='700' lineHeight='100%' color={useColorModeValue('secondaryGray.900', 'white')}>
-          Yearly Stocks Standard Deviation
-        </Text>
+      <Tooltip label="This chart represents the yearly standard deviation of stock prices for the top 20 tech companies in 2020. A higher standard deviation indicates greater volatility and potential risk or opportunity in the stock's price." hasArrow>
+          <Text fontSize='22px' fontWeight='700' lineHeight='100%' color={useColorModeValue('secondaryGray.900', 'white')} cursor="help">
+            Yearly Stocks Standard Deviation
+          </Text>
+        </Tooltip>
       </Flex>
       <ReactApexChart
         options={chartOptions}

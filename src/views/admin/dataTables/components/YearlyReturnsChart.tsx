@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactApexChart from 'react-apexcharts';
-import { Box, useColorModeValue, Text, Flex } from '@chakra-ui/react';
+import { Box, useColorModeValue, Text, Flex, Tooltip } from '@chakra-ui/react';
 import Papa from 'papaparse';
 import { ApexOptions } from 'apexcharts';
 
@@ -81,28 +81,6 @@ const YearlyReturnsChart: React.FC<YearlyReturnsChartProps> = ({ isBest }) => {
     };
     
 
-    // const calculateReturns = (data: StockData[]): number | null => {
-    //   const validEntries = data.filter(entry => entry.Date && entry.Date.startsWith('2020'));
-
-    //   const sortedEntries = validEntries.sort((a, b) => new Date(a.Date).getTime() - new Date(b.Date).getTime());
-    //   if (sortedEntries.length === 0) {
-    //     // Handle the case where no data is available for 2020
-    //     return null;
-    //   }
-
-    //   const startData = sortedEntries[0];
-    //   const endData = sortedEntries[sortedEntries.length - 1];
-      
-    //   // If we don't have both, return null
-    //   if (!startData || !endData) return null;
-    
-    //   const startPrice = startData['Adj Close'];
-    //   const endPrice = endData['Adj Close'];
-    
-    //   // Calculate the return percentage
-    //   return ((endPrice - startPrice) / startPrice) * 100;
-    // };
-
     const calculateReturns = (data: StockData[]): number | null => {
       const validEntries = data.filter(entry => entry.Date && entry.Date.startsWith('2020'));
     
@@ -180,12 +158,19 @@ const YearlyReturnsChart: React.FC<YearlyReturnsChartProps> = ({ isBest }) => {
     data: yearlyReturns.map(item => item.yearlyReturn ?? 0), // Use nullish coalescing to handle null
   }];
 
+  const chartTitle = isBest ? 'Best Yearly Cumulative Returns in 2020' : 'Worst Yearly Cumulative Returns in 2020';
+  const tooltipLabel = isBest 
+    ? "This chart shows the top 10 tech companies with the best cumulative returns in 2020. Cumulative returns are calculated based on the daily closing prices throughout the year." 
+    : "This chart shows the top 10 tech companies with the worst cumulative returns in 2020. Cumulative returns are calculated based on the daily closing prices throughout the year.";
+
   return (
     <Box bg={cardBg} p="4" borderRadius="lg" shadow="base" width="100%">
       <Flex px='25px' mb="8px" justifyContent='space-between' align='center'>
-        <Text color={textColor} fontSize='22px' fontWeight='700' lineHeight='100%'>
-          {isBest ? 'Best' : 'Worst'} Yearly Cumulative Returns in 2020
-        </Text>
+        <Tooltip label={tooltipLabel} hasArrow>
+          <Text color={textColor} fontSize='22px' fontWeight='700' lineHeight='100%' cursor="help">
+            {chartTitle}
+          </Text>
+        </Tooltip>
       </Flex>
       <ReactApexChart options={chartOptions} series={series} type="bar" />
     </Box>

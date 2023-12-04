@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactApexChart from 'react-apexcharts';
-import { Box, useColorModeValue, Text, Flex } from '@chakra-ui/react';
+import { Box, useColorModeValue, Text, Flex, Tooltip } from '@chakra-ui/react';
 import { ApexOptions } from 'apexcharts';
 import Menu from 'components/menu/MainMenu';
 
@@ -51,9 +51,18 @@ const PeRatioBarChart: React.FC<PeRatioBarChartProps> = ({ data }) => {
       <Box bg={cardBg} p="4" borderRadius="lg" shadow="base" width="100%">
 
         <Flex px='25px' mb="8px" justifyContent='space-between' align='center'>
-          <Text color={textColor} fontSize='22px' fontWeight='700' lineHeight='100%'>
+          <Tooltip   label={
+            <>
+            This chart displays the PE (Price-to-Earnings) Ratio for the top 10 tech stocks. The PE Ratio is a key metric used to evaluate the valuation of a company's stock.<br /><br />
+            A PE ratio evaluates a company's stock price relative to its earnings. A high PE ratio suggests the stock is valued higher by the market, often reflecting investor expectations of future growth, but it could also indicate overvaluation. Conversely, a low PE ratio might signal an undervalued stock or that investors have concerns about the company's future earnings. This ratio varies by industry, so it's best compared within the same sector. The PE ratio is a useful tool but should be considered alongside other financial metrics for a well-rounded investment analysis.
+            </>
+            }
+              hasArrow
+            >
+          <Text color={textColor} fontSize='22px' fontWeight='700' lineHeight='100%' cursor="help">
             PE Ratio per Company of Top 10 Tech Stocks
           </Text>
+        </Tooltip>
 			</Flex>
       
         <ReactApexChart options={options} series={series} type="bar" />
