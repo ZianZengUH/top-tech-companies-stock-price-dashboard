@@ -101,11 +101,14 @@ const MostVolatileStocksChart: React.FC = () => {
       const results = (await Promise.all(promises)).filter(result => !isNaN(result.volatility));
       results.sort((a, b) => b.volatility - a.volatility);
 
-      setVolatilityData(results);
+      // Slice the array to keep only the top 20 entries
+      const top20Results = results.slice(0, 20);
+
+      setVolatilityData(top20Results);
       setChartOptions(prevOptions => ({
         ...prevOptions,
         xaxis: {
-          categories: results.map(item => item.symbol),
+          categories: top20Results.map(item => item.symbol),
         },
       }));
     };

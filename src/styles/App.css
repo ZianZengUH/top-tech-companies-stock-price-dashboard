@@ -7,3 +7,19 @@ body {
 option {
   color: black;
 }
+
+
+.card-container {
+  width: 100%;
+  max-width: 800px;
+  padding: 4;
+  border-radius: lg;
+  box-shadow: base;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .card-container {
+    max-width: 100%;
+  }
+}

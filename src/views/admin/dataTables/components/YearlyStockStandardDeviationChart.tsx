@@ -92,12 +92,15 @@ const YearlyStockStandardDeviationChart: React.FC = () => {
       // Filter out results with NaN standard deviations
       const filteredResults = results.filter(result => !isNaN(result.stdDev));
       filteredResults.sort((a, b) => b.stdDev - a.stdDev);
-    
-      setStandardDeviations(filteredResults);
+      
+      // Slice the array to keep only the top 20 entries
+      const top20Results = filteredResults.slice(0, 20);
+
+      setStandardDeviations(top20Results);
       setChartOptions(prevOptions => ({
         ...prevOptions,
         xaxis: {
-          categories: filteredResults.map(item => item.symbol),
+          categories: top20Results.map(item => item.symbol),
         },
       }));
     };

@@ -60,7 +60,7 @@ export default function SectorPercentageTable(props: { sectorData: SectorRow[] }
           style={{ width: '150px' }}
           ml="-2"
         />
-				<Menu />
+		
 			</Flex>
 
       <Table variant='simple'>

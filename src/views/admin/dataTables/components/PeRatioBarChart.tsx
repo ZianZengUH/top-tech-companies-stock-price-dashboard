@@ -54,7 +54,6 @@ const PeRatioBarChart: React.FC<PeRatioBarChartProps> = ({ data }) => {
           <Text color={textColor} fontSize='22px' fontWeight='700' lineHeight='100%'>
             PE Ratio per Company of Top 10 Tech Stocks
           </Text>
-				<Menu />
 			</Flex>
       
         <ReactApexChart options={options} series={series} type="bar" />

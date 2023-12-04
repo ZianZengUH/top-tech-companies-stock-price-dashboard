@@ -116,9 +116,11 @@ const StockStandardDeviationChart: React.FC = () => {
       });
 
       const results = await Promise.all(promises);
-      const sortedResults = results.sort((a, b) => b.standardDeviation - a.standardDeviation).slice(0, 50);
+      const sortedResults = results.sort((a, b) => b.standardDeviation - a.standardDeviation).slice(0, 20);
 
       // console.log("Sorted Results:", sortedResults); // Log the sorted results
+
+
 
       setStandardDeviations(sortedResults);
       setChartOptions(prevOptions => ({
