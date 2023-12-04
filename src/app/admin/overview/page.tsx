@@ -223,7 +223,7 @@ export default function OverviewCharts() {
 
         {BarChartVisible && <StockStandardDeviationChart />}
         {BarChartVisible && <YearlyStockStandardDeviationChart />}
-        <MostVolatileStocksChart />
+        {BarChartVisible && <MostVolatileStocksChart />}
 
       </SimpleGrid>
     </Box>
