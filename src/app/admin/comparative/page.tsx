@@ -2,6 +2,7 @@
 import {
   Box,
   Button,
+  Container,
   Flex,
   Menu,
   MenuButton,
@@ -614,10 +615,12 @@ const renderChart2 = () => {
         gap="20px"
         mb="20px"
       >
-        <Flex me="50px" mt="20px">
+        <Flex mt="20px" >
           <Menu>
-            <MenuButton as={Button} rightIcon={<ChevronDownIcon />} bg='gray.200' width='10em'>
+            <MenuButton as={Button} rightIcon={<ChevronDownIcon />} bg='gray.200' width='20em'>
+			<Container width='13em' style={{ textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }} >
               {tickName}
+			</Container>
             </MenuButton>
             <MenuList>
               {tickers.map((ticker, i) => (
@@ -628,8 +631,11 @@ const renderChart2 = () => {
             </MenuList>
           </Menu>
           <Menu>
-            <MenuButton as={Button} bg='gray.200' rightIcon={<ChevronDownIcon />} marginLeft='2em'>
+			
+            <MenuButton as={Button} bg='gray.200' rightIcon={<ChevronDownIcon />} marginLeft='2em' width='20em'>
+			<Container width='13em' style={{ textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }} >
               {chartType1}
+			</Container>
             </MenuButton>
             <MenuList>
               <MenuItem onClick={() => handleFirstChartTypeChange(chartOptions[0])}>Monthly Cumulative Stock Returns (By Year)</MenuItem>
@@ -640,10 +646,12 @@ const renderChart2 = () => {
             </MenuList>
           </Menu>
           </Flex>
-          <Flex me="50px" mt="20px">
+          <Flex  mt="20px">
           <Menu>
-            <MenuButton as={Button} rightIcon={<ChevronDownIcon />} bg='gray.200' width='10em'>
+            <MenuButton as={Button} rightIcon={<ChevronDownIcon />} bg='gray.200' width='20em'>
+			<Container width='13em' style={{ textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }} >
               {tickName2}
+			</Container>
             </MenuButton>
             <MenuList>
               {tickers.map((ticker, i) => (
@@ -654,8 +662,10 @@ const renderChart2 = () => {
             </MenuList>
           </Menu>         
           <Menu>
-            <MenuButton as={Button}  bg='gray.200'rightIcon={<ChevronDownIcon />} marginLeft='2em' >
+            <MenuButton as={Button}  bg='gray.200'rightIcon={<ChevronDownIcon />} marginLeft='2em' width='20em'>
+			<Container width='13em' style={{ textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }} >
               {chartType2}
+			</Container>
             </MenuButton>
             <MenuList>
               <MenuItem onClick={() => handleSecondChartTypeChange(chartOptions[0])}>Monthly Cumulative Stock Returns (By Year)</MenuItem>
