@@ -34,12 +34,13 @@ import LineCumuRetY from 'views/admin/default/components/Financial/LineCumuRetY'
 import LineStockPrice from 'views/admin/default/components/Financial/LineStockPrice';
 import HistoStockReturn from 'views/admin/default/components/Financial/HistoStockReturn';
 import CandlestickChart from 'views/admin/default/components/Financial/CandlestickChart';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 
 // Assets
 
 export default function Default() {
+
   // Chakra Color Mode
   const[value, setValue] = React.useState('AAPL');
   const[tickName, setTickName] = React.useState('Apple Inc.');
@@ -569,6 +570,7 @@ export default function Default() {
 
   return (
     <Box pt={{ base: '130px', md: '80px', xl: '80px' }}>
+		<a href="#" style={{ fontSize: '40px', fontWeight: 'bold'}}>Financial Charts</a>
       <SimpleGrid
         position="sticky"
         zIndex={10}

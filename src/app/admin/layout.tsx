@@ -36,10 +36,17 @@ export default function AdminLayout(props: DashboardLayoutProps) {
     window.document.documentElement.dir = 'ltr';
   });
 
+  useEffect(() => {
+    // Set the document title to the name of the active route
+    const currentRouteName = getActiveRoute(routes);
+    document.title = currentRouteName;
+  }, [children]); // Dependency on 'children' to update the title when navigation happens
+
   const bg = useColorModeValue('secondaryGray.300', 'navy.900');
 
   return (
     <Box h="100vh" w="100vw" bg={bg}>
+
       <SidebarContext.Provider
         value={{
           toggleSidebar,
@@ -61,7 +68,8 @@ export default function AdminLayout(props: DashboardLayoutProps) {
           transitionProperty="top, bottom, width"
           transitionTimingFunction="linear, linear, ease"
         >
-          <Portal>
+          {/* Not able to fetch the correct route name result in not updating page title */}
+          {/* <Portal>
             <Box>
               <Navbar
                 onOpen={onOpen}
@@ -73,7 +81,7 @@ export default function AdminLayout(props: DashboardLayoutProps) {
                 {...rest}
               />
             </Box>
-          </Portal>
+          </Portal> */}
 
           <Box
             mx="auto"

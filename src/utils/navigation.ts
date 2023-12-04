@@ -1,4 +1,5 @@
 import { IRoute } from "types/navigation";
+import routes from 'routes';
 
 // NextJS Requirement
 export const isWindowAvailable = () => typeof window !== "undefined";
@@ -12,6 +13,7 @@ export const findCurrentRoute = (routes: IRoute[]): IRoute => {
   );
 
   return foundRoute;
+ 
 };
 
 export const getActiveRoute = (routes: IRoute[]): string => {

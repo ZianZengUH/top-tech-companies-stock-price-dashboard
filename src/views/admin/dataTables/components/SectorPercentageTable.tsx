@@ -1,4 +1,5 @@
-import { Box, Flex, Progress, Table, Tbody, Td, Text, Th, Thead, Tr, useColorModeValue, Input } from '@chakra-ui/react';
+import { Box, Flex, Progress, Table, Tbody, Td, Text, Th, Thead, Tr, useColorModeValue, Input, Tooltip } from '@chakra-ui/react';
+
 import { createColumnHelper, useReactTable, getCoreRowModel, flexRender } from '@tanstack/react-table';
 import Card from 'components/card/Card';
 import React, { useMemo, useState } from 'react';
@@ -49,9 +50,11 @@ export default function SectorPercentageTable(props: { sectorData: SectorRow[] }
     <Card w='100%' overflowX='auto'>
       
       <Flex px='25px' mb="8px" justifyContent='space-between' align='center'>
-        <Text color={textColor} fontSize='22px' fontWeight='700' lineHeight='100%'>
-          Percentage Per Sector
-        </Text>
+      <Tooltip label="This table displays the percentage distribution of a specific metric across different sectors. Each sector's percentage represents its relative share or impact within the total dataset. This information helps in understanding the sector-wise allocation or contribution in the given context." hasArrow>
+          <Text color={textColor} fontSize='22px' fontWeight='700' lineHeight='100%' cursor="help">
+            Percentage Per Sector
+          </Text>
+        </Tooltip>
         <Input
           placeholder="Search"
           value={searchKeyword}

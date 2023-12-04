@@ -21,7 +21,6 @@ import CandlestickChart from 'views/admin/default/components/Financial/Candlesti
 import React from 'react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 
-
 // Assets
 
 export default function Default() {
@@ -607,14 +606,16 @@ const renderChart2 = () => {
 
   return (
     <Box pt={{ base: '130px', md: '80px', xl: '80px' }}>
-      <SimpleGrid
-        position="sticky"
-        zIndex={10}
-        top={20} 
-        columns={{ base: 1, md: 2, lg: 2, '2xl': 1 }}
-        gap="20px"
-        mb="20px"
-      >
+		<a href="#" style={{ fontSize: '40px', fontWeight: 'bold'}}>Comparative Charts</a>
+		<SimpleGrid
+			position="sticky"
+			zIndex={10}
+			top={20} 
+			columns={{ base: 1, md: 2, lg: 2, '2xl': 1 }}
+			gap="20px"
+			mb="20px"
+			mt='50px'
+		>
         <Flex mt="20px" >
           <Menu>
             <MenuButton as={Button} rightIcon={<ChevronDownIcon />} bg='gray.200' width='20em'>

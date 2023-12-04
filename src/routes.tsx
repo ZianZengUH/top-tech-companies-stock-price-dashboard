@@ -40,7 +40,7 @@ const routes: IRoute[] = [
   //   secondary: true,
   // },
   {
-    name: 'Overview',
+    name: 'Top Tech Companies Stock Analysis - Overview',
     layout: '/admin',
     icon: <Icon as={MdBarChart} width="20px" height="20px" color="inherit" />,
     path: '/overview',

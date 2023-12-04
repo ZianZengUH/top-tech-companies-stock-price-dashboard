@@ -17,7 +17,7 @@ import tableDataColumns from 'views/admin/dataTables/variables/tableDataColumns'
 import tableDataComplex from 'views/admin/dataTables/variables/tableDataComplex';
 import React, { useState, useEffect } from 'react';
 import Papa from 'papaparse';
-import { Box, SimpleGrid, Table, Thead, Tbody, Tr, Th, Td, useColorModeValue, Checkbox, CheckboxGroup, Stack, Input} from '@chakra-ui/react';
+import { Box, SimpleGrid, Table, Thead, Tbody, Tr, Th, Td, useColorModeValue, Checkbox, CheckboxGroup, Stack, Input, Flex} from '@chakra-ui/react';
 import Card from 'components/card/Card';
 import AdminLayout from 'layouts/admin';
 import ApexCharts from 'apexcharts'
@@ -62,7 +62,7 @@ export default function OverviewCharts() {
   /*
    Sector Percentages Table
   */
-   const [TableVisible, setTableVisible] = useState(true);
+  const [TableVisible, setTableVisible] = useState(true);
   const [sectorPercentages, setSectorPercentages] = useState<{ sector: string; percentage: number }[]>([]);
   // Define a background color for the card based on the color mode
   const cardBg = useColorModeValue('white', 'gray.700');
@@ -184,42 +184,36 @@ export default function OverviewCharts() {
 
   return (
     <Box pt={{ base: '130px', md: '80px', xl: '80px' }}>
-    	<CheckboxGroup defaultValue={['piechart','barchart','table']} >
-			<Stack spacing={[1, 5]} direction={'row'}>
-      <Checkbox colorScheme='blue' value='barchart' isChecked={BarChartVisible} onChange={() => setBarChartVisible(!BarChartVisible)} >Bar Chart</Checkbox>
-			<Checkbox colorScheme='blue' value='piechart' isChecked={PieChartVisible} onChange={() => setPieChartVisible(!PieChartVisible)} >Pie Chart</Checkbox>
-			<Checkbox colorScheme='blue' value='table' isChecked={TableVisible} onChange={() => setTableVisible(!TableVisible)} >Table</Checkbox>
-      {/* <Input
-      placeholder="Search..."
-      value={searchKeyword}
-      onChange={(e) => setSearchKeyword(e.target.value.toLowerCase())}
-      /> */}
-			</Stack>
-			</CheckboxGroup>
-
+      <a href="#" style={{ fontSize: '40px', fontWeight: 'bold'}}>Top Tech Companies Stock Analysis - Overview</a>
+      <Flex mt="20px">
+        <CheckboxGroup defaultValue={['piechart','barchart','table']} >
+        <Stack spacing={[1, 5]} direction={'row'}>
+        <Checkbox colorScheme='blue' value='barchart' isChecked={BarChartVisible} onChange={() => setBarChartVisible(!BarChartVisible)} >Bar Chart</Checkbox>
+        <Checkbox colorScheme='blue' value='piechart' isChecked={PieChartVisible} onChange={() => setPieChartVisible(!PieChartVisible)} >Pie Chart</Checkbox>
+        <Checkbox colorScheme='blue' value='table' isChecked={TableVisible} onChange={() => setTableVisible(!TableVisible)} >Table</Checkbox>
+        {/* <Input
+        placeholder="Search..."
+        value={searchKeyword}
+        onChange={(e) => setSearchKeyword(e.target.value.toLowerCase())}
+        /> */}
+        </Stack>
+        </CheckboxGroup>
+      </Flex>
+    	
       <SimpleGrid
         mb="20px"
         columns={{ sm: 1, md: 2 }}
         spacing={{ base: '20px', xl: '20px' }}
       >
-        {/* ... other tables and charts ... */}
- 
-        {/* <DevelopmentTable tableData={tableDataDevelopment} /> */}
-        {/* TODO: Change the style of table to similar to Horizon UI */}
+
         {TableVisible && <SectorPercentageTable sectorData={sectorPercentages} />}
 
         {marketCapData.length > 0 && PieChartVisible && <PieChart data={marketCapData} />}
 
-        {/* TODO: PeRatioBarChart's may not be correct*/}
-
-        {/* <PeRatioBarChart data={topTechStocksPE} /> */}
         {BarChartVisible && <PeRatioBarChart data={topTechStocksPE} />}
 
-        {/* TODO: Yearly Best and Worst Return may not be correct, in validEntries, it may filter out companies that contain null or undefined entries */}
         {BarChartVisible && <YearlyReturnsChart isBest={true} />}
         {BarChartVisible && <YearlyReturnsChart isBest={false} />}
-
-        {/* Daily Stock Standard Deviation Chart */}
 
         {BarChartVisible && <StockStandardDeviationChart />}
         {BarChartVisible && <YearlyStockStandardDeviationChart />}
