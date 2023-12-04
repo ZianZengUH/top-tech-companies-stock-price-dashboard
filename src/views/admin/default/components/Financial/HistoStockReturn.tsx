@@ -2,26 +2,24 @@
 import { Box,Text } from '@chakra-ui/react';
 // Custom components
 import Card from 'components/card/Card';
-import BarChart from 'components/charts/BarChart';
+import BarChart from 'components/charts/FinanceBarChart';
 import { useEffect, useState } from 'react';
 // Assets
 import { barChartOptionsHisto } from 'variables/financialcharts';
-import { histogramAAPL } from 'variables/financialCharts/histReturns';
-import React from 'react';
 import Papa from 'papaparse';
 
 interface currentTick {
 	tick: string;
-	name: String;
+	name: string;
 }
 
 interface file {
-	x: Number, y: Number
+	x: string, y: number
 }
 
 export default function HistoStockReturn({tick, name}: currentTick) {
 	// Chakra Color Mode
-	const [info, setInfo] = useState<file[]>([]);
+	const [info, setInfo] = useState([]);
 	useEffect(() => {
 		async function fetchData() {
 			let response = await fetch('/data/top_tech_company/Financial/Histo/histogram' + tick + '.csv')
@@ -31,25 +29,26 @@ export default function HistoStockReturn({tick, name}: currentTick) {
 				skipEmptyLines: true,
 				dynamicTyping: true,
 				complete: (results) => {
-					setInfo(
-						results.data
-					);
+					let parsedResults = results.data.map((items =>
+						{return {x: items.x.toString(), y: items.y}}
+					));
+					setInfo(parsedResults);
 				}
 			});
 		}
 		fetchData();
-	});
+	}, [tick]);
 
 	const newData = [{
-		name: 'Values',
+		name: 'values',
 		data: info
-	}]
+	}];
 
 	return (
 		<Card key={2} justifyContent='center' alignItems='center' flexDirection='column' w='100%' mb='0px'>
 				<Text fontSize='22px'><b>Frequency of Stock Returns</b></Text>
 				<Box minH='260px' minW='75%' mt='auto'>
-					<BarChart chartData={histogramAAPL} chartOptions={barChartOptionsHisto} />
+					<BarChart chartData={newData} chartOptions={barChartOptionsHisto} />
 				</Box>
 		</Card>
 	);

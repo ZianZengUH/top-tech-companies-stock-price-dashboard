@@ -6,7 +6,6 @@ import LineChart from 'components/charts/LineChart';
 import { useEffect, useState } from 'react';
 // Assets
 import {lineChartOptionsYearRev} from 'variables/financialcharts';
-import React from 'react';
 import Papa from 'papaparse';
 
 interface currentTick {
